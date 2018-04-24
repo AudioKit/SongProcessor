@@ -65,3 +65,18 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+# xcode noise
+build/
+DerivedData/
+*.pyc
+*~.nib/
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.xcuserstate
+*.xccheckout
+*.xctimeline
+project.xcworkspace/
+xcuserdata/
+xcodebuild
