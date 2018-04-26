@@ -80,3 +80,7 @@ DerivedData/
 project.xcworkspace/
 xcuserdata/
 xcodebuild
+
+# CocoaPods
+# Ignore installed versions of AudioKit
+Pods/*

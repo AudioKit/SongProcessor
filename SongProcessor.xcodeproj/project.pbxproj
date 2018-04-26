@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A15134900EDED172676B153E /* Pods_SongProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */; };
 		C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40244481DB56A0500617B38 /* BitCrusherViewController.swift */; };
 		C42C1F001D23B0550020D550 /* SongExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C1EFF1D23B0550020D550 /* SongExporter.swift */; };
+		C47C52732091E22D00A6FB3C /* drumloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C47C526E2091E22D00A6FB3C /* drumloop.wav */; };
+		C47C52742091E22D00A6FB3C /* mixloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C47C526F2091E22D00A6FB3C /* mixloop.wav */; };
+		C47C52752091E22D00A6FB3C /* leadloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C47C52702091E22D00A6FB3C /* leadloop.wav */; };
+		C47C52762091E22D00A6FB3C /* bassloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C47C52712091E22D00A6FB3C /* bassloop.wav */; };
+		C47C52772091E22D00A6FB3C /* guitarloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C47C52722091E22D00A6FB3C /* guitarloop.wav */; };
 		C4981E171DACC8CB007C8E7A /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4981E151DACC8BF007C8E7A /* AudioKit.framework */; };
 		C4CB57541D1AFB1500479598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57531D1AFB1500479598 /* AppDelegate.swift */; };
 		C4CB57591D1AFB1500479598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4CB57571D1AFB1500479598 /* Main.storyboard */; };
@@ -25,11 +31,6 @@
 		C4CB57841D1AFCFE00479598 /* SongProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57831D1AFCFE00479598 /* SongProcessor.swift */; };
 		C4D4449E1DA9231B009B6AF6 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4449D1DA9231B009B6AF6 /* EffectsViewController.swift */; };
 		C4D444BA1DAAB223009B6AF6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D444B91DAAB223009B6AF6 /* AudioToolbox.framework */; };
-		C4E2D0621E95060F004D2557 /* bassloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4E2D05D1E95060F004D2557 /* bassloop.wav */; };
-		C4E2D0631E95060F004D2557 /* drumloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4E2D05E1E95060F004D2557 /* drumloop.wav */; };
-		C4E2D0641E95060F004D2557 /* guitarloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4E2D05F1E95060F004D2557 /* guitarloop.wav */; };
-		C4E2D0651E95060F004D2557 /* leadloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4E2D0601E95060F004D2557 /* leadloop.wav */; };
-		C4E2D0661E95060F004D2557 /* mixloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4E2D0611E95060F004D2557 /* mixloop.wav */; };
 		C4FB84BA1DB563D800B68B3D /* PitchShifterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FB84B91DB563D800B68B3D /* PitchShifterViewController.swift */; };
 		EA10E1561F4F94BD003F0CA9 /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10E1551F4F94BD003F0CA9 /* AudioKitUI.framework */; };
 /* End PBXBuildFile section */
@@ -48,9 +49,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.debug.xcconfig"; sourceTree = "<group>"; };
+		B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SongProcessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40244481DB56A0500617B38 /* BitCrusherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitCrusherViewController.swift; path = "View Controllers/BitCrusherViewController.swift"; sourceTree = "<group>"; };
 		C42C1EFF1D23B0550020D550 /* SongExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongExporter.swift; sourceTree = "<group>"; };
 		C474B4F11D8CC1E900A33E67 /* SongProcessor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SongProcessor.entitlements; sourceTree = "<group>"; };
+		C47C526E2091E22D00A6FB3C /* drumloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drumloop.wav; path = Loops/drumloop.wav; sourceTree = "<group>"; };
+		C47C526F2091E22D00A6FB3C /* mixloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mixloop.wav; path = Loops/mixloop.wav; sourceTree = "<group>"; };
+		C47C52702091E22D00A6FB3C /* leadloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = leadloop.wav; path = Loops/leadloop.wav; sourceTree = "<group>"; };
+		C47C52712091E22D00A6FB3C /* bassloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bassloop.wav; path = Loops/bassloop.wav; sourceTree = "<group>"; };
+		C47C52722091E22D00A6FB3C /* guitarloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = guitarloop.wav; path = Loops/guitarloop.wav; sourceTree = "<group>"; };
 		C4981E151DACC8BF007C8E7A /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = "../../../Frameworks/AudioKit-iOS/AudioKit.framework"; sourceTree = "<group>"; };
 		C4CB57501D1AFB1500479598 /* SongProcessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SongProcessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4CB57531D1AFB1500479598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,12 +77,8 @@
 		C4CB57831D1AFCFE00479598 /* SongProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongProcessor.swift; sourceTree = "<group>"; };
 		C4D4449D1DA9231B009B6AF6 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EffectsViewController.swift; path = "View Controllers/EffectsViewController.swift"; sourceTree = "<group>"; };
 		C4D444B91DAAB223009B6AF6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C4E2D05D1E95060F004D2557 /* bassloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bassloop.wav; path = ../../../../Playgrounds/AudioKitPlaygrounds/Playgrounds/Basics.playground/Resources/bassloop.wav; sourceTree = "<group>"; };
-		C4E2D05E1E95060F004D2557 /* drumloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drumloop.wav; path = ../../../../Playgrounds/AudioKitPlaygrounds/Playgrounds/Basics.playground/Resources/drumloop.wav; sourceTree = "<group>"; };
-		C4E2D05F1E95060F004D2557 /* guitarloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = guitarloop.wav; path = ../../../../Playgrounds/AudioKitPlaygrounds/Playgrounds/Basics.playground/Resources/guitarloop.wav; sourceTree = "<group>"; };
-		C4E2D0601E95060F004D2557 /* leadloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = leadloop.wav; path = ../../../../Playgrounds/AudioKitPlaygrounds/Playgrounds/Basics.playground/Resources/leadloop.wav; sourceTree = "<group>"; };
-		C4E2D0611E95060F004D2557 /* mixloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mixloop.wav; path = ../../../../Playgrounds/AudioKitPlaygrounds/Playgrounds/Basics.playground/Resources/mixloop.wav; sourceTree = "<group>"; };
 		C4FB84B91DB563D800B68B3D /* PitchShifterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchShifterViewController.swift; path = "View Controllers/PitchShifterViewController.swift"; sourceTree = "<group>"; };
+		D3064E2A0A7E0AE298E62F0E /* Pods-SongProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.release.xcconfig"; sourceTree = "<group>"; };
 		EA10E1551F4F94BD003F0CA9 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = "../../../Frameworks/AudioKit-iOS/AudioKitUI.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,12 +90,22 @@
 				EA10E1561F4F94BD003F0CA9 /* AudioKitUI.framework in Frameworks */,
 				C4981E171DACC8CB007C8E7A /* AudioKit.framework in Frameworks */,
 				C4D444BA1DAAB223009B6AF6 /* AudioToolbox.framework in Frameworks */,
+				A15134900EDED172676B153E /* Pods_SongProcessor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E42ADC5E4CEDB7E8129206F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */,
+				D3064E2A0A7E0AE298E62F0E /* Pods-SongProcessor.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C402444A1DB56A2400617B38 /* Effect Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +124,7 @@
 				C4CB57521D1AFB1500479598 /* SongProcessor */,
 				C4CB57511D1AFB1500479598 /* Products */,
 				C4D444B81DAAB223009B6AF6 /* Frameworks */,
+				6E42ADC5E4CEDB7E8129206F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,11 +178,11 @@
 		C4CB57781D1AFC9100479598 /* Loops */ = {
 			isa = PBXGroup;
 			children = (
-				C4E2D05D1E95060F004D2557 /* bassloop.wav */,
-				C4E2D05E1E95060F004D2557 /* drumloop.wav */,
-				C4E2D05F1E95060F004D2557 /* guitarloop.wav */,
-				C4E2D0601E95060F004D2557 /* leadloop.wav */,
-				C4E2D0611E95060F004D2557 /* mixloop.wav */,
+				C47C52712091E22D00A6FB3C /* bassloop.wav */,
+				C47C526E2091E22D00A6FB3C /* drumloop.wav */,
+				C47C52722091E22D00A6FB3C /* guitarloop.wav */,
+				C47C52702091E22D00A6FB3C /* leadloop.wav */,
+				C47C526F2091E22D00A6FB3C /* mixloop.wav */,
 			);
 			name = Loops;
 			sourceTree = "<group>";
@@ -178,6 +193,7 @@
 				EA10E1551F4F94BD003F0CA9 /* AudioKitUI.framework */,
 				C4981E151DACC8BF007C8E7A /* AudioKit.framework */,
 				C4D444B91DAAB223009B6AF6 /* AudioToolbox.framework */,
+				B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,6 +205,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4CB57621D1AFB1500479598 /* Build configuration list for PBXNativeTarget "SongProcessor" */;
 			buildPhases = (
+				7F73CBE4DBA8E43EC33320AA /* [CP] Check Pods Manifest.lock */,
 				C4CB574C1D1AFB1500479598 /* Sources */,
 				C4CB574D1D1AFB1500479598 /* Frameworks */,
 				C4CB574E1D1AFB1500479598 /* Resources */,
@@ -251,18 +268,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E2D0631E95060F004D2557 /* drumloop.wav in Resources */,
+				C47C52772091E22D00A6FB3C /* guitarloop.wav in Resources */,
+				C47C52752091E22D00A6FB3C /* leadloop.wav in Resources */,
+				C47C52742091E22D00A6FB3C /* mixloop.wav in Resources */,
 				C4CB575E1D1AFB1500479598 /* LaunchScreen.storyboard in Resources */,
+				C47C52762091E22D00A6FB3C /* bassloop.wav in Resources */,
 				C4CB575B1D1AFB1500479598 /* Assets.xcassets in Resources */,
-				C4E2D0651E95060F004D2557 /* leadloop.wav in Resources */,
+				C47C52732091E22D00A6FB3C /* drumloop.wav in Resources */,
 				C4CB57591D1AFB1500479598 /* Main.storyboard in Resources */,
-				C4E2D0641E95060F004D2557 /* guitarloop.wav in Resources */,
-				C4E2D0621E95060F004D2557 /* bassloop.wav in Resources */,
-				C4E2D0661E95060F004D2557 /* mixloop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F73CBE4DBA8E43EC33320AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SongProcessor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4CB574C1D1AFB1500479598 /* Sources */ = {
@@ -341,7 +379,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../../Frameworks/AudioKit-iOS";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -399,7 +437,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../../Frameworks/AudioKit-iOS";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -420,6 +458,7 @@
 		};
 		C4CB57631D1AFB1500479598 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
@@ -444,6 +483,7 @@
 		};
 		C4CB57641D1AFB1500479598 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3064E2A0A7E0AE298E62F0E /* Pods-SongProcessor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
