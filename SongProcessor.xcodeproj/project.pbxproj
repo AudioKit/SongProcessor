@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7020D5F220A2FA860098F4B5 /* AddEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F120A2FA860098F4B5 /* AddEffectViewController.swift */; };
+		7020D5F420A2FC840098F4B5 /* EffectPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F320A2FC840098F4B5 /* EffectPickerTableViewCell.swift */; };
+		704DA44620A2D48000442BA9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44520A2D48000442BA9 /* MainViewController.swift */; };
+		704DA44920A2D51000442BA9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44820A2D51000442BA9 /* PlayerViewController.swift */; };
+		704DA44C20A2DF9800442BA9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44B20A2DF9800442BA9 /* MainViewModel.swift */; };
+		704DA44E20A2E22000442BA9 /* EffectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */; };
+		704DA45320A2E26800442BA9 /* AddEffectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */; };
+		704DA45720A2E49500442BA9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA45620A2E49500442BA9 /* Colors.swift */; };
 		A15134900EDED172676B153E /* Pods_SongProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */; };
 		C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40244481DB56A0500617B38 /* BitCrusherViewController.swift */; };
 		C42C1F001D23B0550020D550 /* SongExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C1EFF1D23B0550020D550 /* SongExporter.swift */; };
@@ -26,8 +34,8 @@
 		C4CB576E1D1AFC0300479598 /* VariableDelayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB576D1D1AFC0300479598 /* VariableDelayViewController.swift */; };
 		C4CB57711D1AFC5200479598 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57701D1AFC5200479598 /* AlbumsViewController.swift */; };
 		C4CB57731D1AFC6100479598 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57721D1AFC6100479598 /* ArtistsViewController.swift */; };
-		C4CB57751D1AFC7300479598 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57741D1AFC7300479598 /* SongsViewController.swift */; };
-		C4CB57771D1AFC8200479598 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57761D1AFC8200479598 /* SongViewController.swift */; };
+		C4CB57751D1AFC7300479598 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57741D1AFC7300479598 /* SongViewController.swift */; };
+		C4CB57771D1AFC8200479598 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57761D1AFC8200479598 /* SongsViewController.swift */; };
 		C4CB57841D1AFCFE00479598 /* SongProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57831D1AFCFE00479598 /* SongProcessor.swift */; };
 		C4D4449E1DA9231B009B6AF6 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D4449D1DA9231B009B6AF6 /* EffectsViewController.swift */; };
 		C4D444BA1DAAB223009B6AF6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D444B91DAAB223009B6AF6 /* AudioToolbox.framework */; };
@@ -50,9 +58,17 @@
 
 /* Begin PBXFileReference section */
 		2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.debug.xcconfig"; sourceTree = "<group>"; };
+		7020D5F120A2FA860098F4B5 /* AddEffectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEffectViewController.swift; sourceTree = "<group>"; };
+		7020D5F320A2FC840098F4B5 /* EffectPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectPickerTableViewCell.swift; sourceTree = "<group>"; };
+		704DA44520A2D48000442BA9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		704DA44820A2D51000442BA9 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		704DA44B20A2DF9800442BA9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectCollectionViewCell.swift; sourceTree = "<group>"; };
+		704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEffectCollectionViewCell.swift; sourceTree = "<group>"; };
+		704DA45620A2E49500442BA9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Helpers/Colors.swift; sourceTree = "<group>"; };
 		B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SongProcessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C40244481DB56A0500617B38 /* BitCrusherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitCrusherViewController.swift; path = "View Controllers/BitCrusherViewController.swift"; sourceTree = "<group>"; };
-		C42C1EFF1D23B0550020D550 /* SongExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongExporter.swift; sourceTree = "<group>"; };
+		C40244481DB56A0500617B38 /* BitCrusherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitCrusherViewController.swift; sourceTree = "<group>"; };
+		C42C1EFF1D23B0550020D550 /* SongExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongExporter.swift; path = AudioKit/SongExporter.swift; sourceTree = "<group>"; };
 		C474B4F11D8CC1E900A33E67 /* SongProcessor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SongProcessor.entitlements; sourceTree = "<group>"; };
 		C47C526E2091E22D00A6FB3C /* drumloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drumloop.wav; path = Loops/drumloop.wav; sourceTree = "<group>"; };
 		C47C526F2091E22D00A6FB3C /* mixloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mixloop.wav; path = Loops/mixloop.wav; sourceTree = "<group>"; };
@@ -66,18 +82,18 @@
 		C4CB575A1D1AFB1500479598 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4CB575D1D1AFB1500479598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4CB575F1D1AFB1500479598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4CB57661D1AFB8F00479598 /* LoopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoopsViewController.swift; path = "View Controllers/LoopsViewController.swift"; sourceTree = "<group>"; };
-		C4CB57691D1AFBCB00479598 /* MoogLadderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoogLadderViewController.swift; path = "View Controllers/MoogLadderViewController.swift"; sourceTree = "<group>"; };
-		C4CB576B1D1AFBEB00479598 /* CostelloReverbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CostelloReverbViewController.swift; path = "View Controllers/CostelloReverbViewController.swift"; sourceTree = "<group>"; };
-		C4CB576D1D1AFC0300479598 /* VariableDelayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VariableDelayViewController.swift; path = "View Controllers/VariableDelayViewController.swift"; sourceTree = "<group>"; };
-		C4CB57701D1AFC5200479598 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumsViewController.swift; path = "View Controllers/iTunes Library Access/AlbumsViewController.swift"; sourceTree = "<group>"; };
-		C4CB57721D1AFC6100479598 /* ArtistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtistsViewController.swift; path = "View Controllers/iTunes Library Access/ArtistsViewController.swift"; sourceTree = "<group>"; };
-		C4CB57741D1AFC7300479598 /* SongsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongsViewController.swift; path = "View Controllers/iTunes Library Access/SongsViewController.swift"; sourceTree = "<group>"; };
-		C4CB57761D1AFC8200479598 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongViewController.swift; path = "View Controllers/iTunes Library Access/SongViewController.swift"; sourceTree = "<group>"; };
-		C4CB57831D1AFCFE00479598 /* SongProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongProcessor.swift; sourceTree = "<group>"; };
-		C4D4449D1DA9231B009B6AF6 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EffectsViewController.swift; path = "View Controllers/EffectsViewController.swift"; sourceTree = "<group>"; };
+		C4CB57661D1AFB8F00479598 /* LoopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopsViewController.swift; sourceTree = "<group>"; };
+		C4CB57691D1AFBCB00479598 /* MoogLadderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoogLadderViewController.swift; sourceTree = "<group>"; };
+		C4CB576B1D1AFBEB00479598 /* CostelloReverbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostelloReverbViewController.swift; sourceTree = "<group>"; };
+		C4CB576D1D1AFC0300479598 /* VariableDelayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableDelayViewController.swift; sourceTree = "<group>"; };
+		C4CB57701D1AFC5200479598 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumsViewController.swift; path = "iTunes Library Access/AlbumsViewController.swift"; sourceTree = "<group>"; };
+		C4CB57721D1AFC6100479598 /* ArtistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtistsViewController.swift; path = "iTunes Library Access/ArtistsViewController.swift"; sourceTree = "<group>"; };
+		C4CB57741D1AFC7300479598 /* SongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongViewController.swift; path = "iTunes Library Access/SongViewController.swift"; sourceTree = "<group>"; };
+		C4CB57761D1AFC8200479598 /* SongsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongsViewController.swift; path = "iTunes Library Access/SongsViewController.swift"; sourceTree = "<group>"; };
+		C4CB57831D1AFCFE00479598 /* SongProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongProcessor.swift; path = AudioKit/SongProcessor.swift; sourceTree = "<group>"; };
+		C4D4449D1DA9231B009B6AF6 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		C4D444B91DAAB223009B6AF6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C4FB84B91DB563D800B68B3D /* PitchShifterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchShifterViewController.swift; path = "View Controllers/PitchShifterViewController.swift"; sourceTree = "<group>"; };
+		C4FB84B91DB563D800B68B3D /* PitchShifterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchShifterViewController.swift; sourceTree = "<group>"; };
 		D3064E2A0A7E0AE298E62F0E /* Pods-SongProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.release.xcconfig"; sourceTree = "<group>"; };
 		EA10E1551F4F94BD003F0CA9 /* AudioKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKitUI.framework; path = "../../../Frameworks/AudioKit-iOS/AudioKitUI.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +122,81 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7020D5EE20A2E4F10098F4B5 /* AudioKit */ = {
+			isa = PBXGroup;
+			children = (
+				C42C1EFF1D23B0550020D550 /* SongExporter.swift */,
+				C4CB57831D1AFCFE00479598 /* SongProcessor.swift */,
+			);
+			name = AudioKit;
+			sourceTree = "<group>";
+		};
+		7020D5EF20A2E4FF0098F4B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C4CB57781D1AFC9100479598 /* Loops */,
+				C4CB575A1D1AFB1500479598 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7020D5F020A2FA6F0098F4B5 /* EffectPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				7020D5F120A2FA860098F4B5 /* AddEffectViewController.swift */,
+				7020D5F320A2FC840098F4B5 /* EffectPickerTableViewCell.swift */,
+			);
+			path = EffectPickerView;
+			sourceTree = "<group>";
+		};
+		704DA44F20A2E22800442BA9 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7020D5F020A2FA6F0098F4B5 /* EffectPickerView */,
+				704DA45120A2E23C00442BA9 /* PlayerView */,
+				704DA45020A2E23200442BA9 /* MainView */,
+			);
+			name = Modules;
+			path = ../Modules;
+			sourceTree = "<group>";
+		};
+		704DA45020A2E23200442BA9 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				704DA44520A2D48000442BA9 /* MainViewController.swift */,
+				704DA44B20A2DF9800442BA9 /* MainViewModel.swift */,
+				704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */,
+				704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		704DA45120A2E23C00442BA9 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				704DA44820A2D51000442BA9 /* PlayerViewController.swift */,
+			);
+			path = PlayerView;
+			sourceTree = "<group>";
+		};
+		704DA45520A2E48200442BA9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				704DA45620A2E49500442BA9 /* Colors.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		704DA45820A2E4A000442BA9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C4CB575C1D1AFB1500479598 /* LaunchScreen.storyboard */,
+				C4CB57571D1AFB1500479598 /* Main.storyboard */,
+				C4CB57531D1AFB1500479598 /* AppDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		C402444A1DB56A2400617B38 /* Effect Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,10 +212,10 @@
 		C4CB57471D1AFB1500479598 = {
 			isa = PBXGroup;
 			children = (
-				C4CB57521D1AFB1500479598 /* SongProcessor */,
-				C4CB57511D1AFB1500479598 /* Products */,
 				C4D444B81DAAB223009B6AF6 /* Frameworks */,
 				6E42ADC5E4CEDB7E8129206F /* Pods */,
+				C4CB57511D1AFB1500479598 /* Products */,
+				C4CB57521D1AFB1500479598 /* SongProcessor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,21 +230,19 @@
 		C4CB57521D1AFB1500479598 /* SongProcessor */ = {
 			isa = PBXGroup;
 			children = (
-				C474B4F11D8CC1E900A33E67 /* SongProcessor.entitlements */,
-				C4CB57831D1AFCFE00479598 /* SongProcessor.swift */,
-				C42C1EFF1D23B0550020D550 /* SongExporter.swift */,
-				C4CB57681D1AFB9500479598 /* View Controllers */,
-				C4CB57781D1AFC9100479598 /* Loops */,
-				C4CB57571D1AFB1500479598 /* Main.storyboard */,
-				C4CB575C1D1AFB1500479598 /* LaunchScreen.storyboard */,
-				C4CB57531D1AFB1500479598 /* AppDelegate.swift */,
-				C4CB575A1D1AFB1500479598 /* Assets.xcassets */,
 				C4CB575F1D1AFB1500479598 /* Info.plist */,
+				C474B4F11D8CC1E900A33E67 /* SongProcessor.entitlements */,
+				7020D5EF20A2E4FF0098F4B5 /* Resources */,
+				7020D5EE20A2E4F10098F4B5 /* AudioKit */,
+				704DA45820A2E4A000442BA9 /* Main */,
+				704DA45520A2E48200442BA9 /* Helpers */,
+				704DA44F20A2E22800442BA9 /* Modules */,
+				C4CB57681D1AFB9500479598 /* ViewControllers */,
 			);
 			path = SongProcessor;
 			sourceTree = "<group>";
 		};
-		C4CB57681D1AFB9500479598 /* View Controllers */ = {
+		C4CB57681D1AFB9500479598 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C402444A1DB56A2400617B38 /* Effect Controllers */,
@@ -161,7 +250,7 @@
 				C4CB576F1D1AFC1700479598 /* iTunes Library Access */,
 				C4CB57661D1AFB8F00479598 /* LoopsViewController.swift */,
 			);
-			name = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		C4CB576F1D1AFC1700479598 /* iTunes Library Access */ = {
@@ -169,8 +258,8 @@
 			children = (
 				C4CB57701D1AFC5200479598 /* AlbumsViewController.swift */,
 				C4CB57721D1AFC6100479598 /* ArtistsViewController.swift */,
-				C4CB57741D1AFC7300479598 /* SongsViewController.swift */,
-				C4CB57761D1AFC8200479598 /* SongViewController.swift */,
+				C4CB57741D1AFC7300479598 /* SongViewController.swift */,
+				C4CB57761D1AFC8200479598 /* SongsViewController.swift */,
 			);
 			name = "iTunes Library Access";
 			sourceTree = "<group>";
@@ -210,6 +299,7 @@
 				C4CB574D1D1AFB1500479598 /* Frameworks */,
 				C4CB574E1D1AFB1500479598 /* Resources */,
 				C4D444B71DAAB218009B6AF6 /* Embed Frameworks */,
+				77C61792126A195997CEAAF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +322,7 @@
 				TargetAttributes = {
 					C4CB574F1D1AFB1500479598 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7P8M7ZUJ37;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -282,6 +373,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		77C61792126A195997CEAAF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7F73CBE4DBA8E43EC33320AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,20 +416,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704DA45320A2E26800442BA9 /* AddEffectCollectionViewCell.swift in Sources */,
+				704DA45720A2E49500442BA9 /* Colors.swift in Sources */,
 				C4FB84BA1DB563D800B68B3D /* PitchShifterViewController.swift in Sources */,
+				704DA44920A2D51000442BA9 /* PlayerViewController.swift in Sources */,
 				C4CB57711D1AFC5200479598 /* AlbumsViewController.swift in Sources */,
 				C42C1F001D23B0550020D550 /* SongExporter.swift in Sources */,
 				C4CB57841D1AFCFE00479598 /* SongProcessor.swift in Sources */,
-				C4CB57751D1AFC7300479598 /* SongsViewController.swift in Sources */,
+				C4CB57751D1AFC7300479598 /* SongViewController.swift in Sources */,
 				C4CB57671D1AFB8F00479598 /* LoopsViewController.swift in Sources */,
 				C4D4449E1DA9231B009B6AF6 /* EffectsViewController.swift in Sources */,
 				C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */,
+				7020D5F220A2FA860098F4B5 /* AddEffectViewController.swift in Sources */,
 				C4CB576E1D1AFC0300479598 /* VariableDelayViewController.swift in Sources */,
+				704DA44620A2D48000442BA9 /* MainViewController.swift in Sources */,
+				704DA44E20A2E22000442BA9 /* EffectCollectionViewCell.swift in Sources */,
 				C4CB576A1D1AFBCB00479598 /* MoogLadderViewController.swift in Sources */,
+				7020D5F420A2FC840098F4B5 /* EffectPickerTableViewCell.swift in Sources */,
 				C4CB57541D1AFB1500479598 /* AppDelegate.swift in Sources */,
-				C4CB57771D1AFC8200479598 /* SongViewController.swift in Sources */,
+				C4CB57771D1AFC8200479598 /* SongsViewController.swift in Sources */,
 				C4CB576C1D1AFBEB00479598 /* CostelloReverbViewController.swift in Sources */,
 				C4CB57731D1AFC6100479598 /* ArtistsViewController.swift in Sources */,
+				704DA44C20A2DF9800442BA9 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,8 +580,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = SongProcessor/SongProcessor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7P8M7ZUJ37;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -488,8 +607,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = SongProcessor/SongProcessor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7P8M7ZUJ37;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -500,6 +621,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.SongProcessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

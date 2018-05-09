@@ -11,4 +11,5 @@ target 'SongProcessor' do
 
   # Pods for SongProcessor
   pod 'AudioKit'
+  pod 'SnapKit'
 end

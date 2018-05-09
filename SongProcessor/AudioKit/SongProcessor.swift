@@ -125,6 +125,7 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
         playersDo { $0.play(from: 0) }
 //        playersDo { $0.schedule(from: 0, to: $0.duration, avTime: nil)}
     }
+    
     func playLoops(at when: AVAudioTime? = nil) {
         let startTime = when ?? SongProcessor.twoRendersFromNow()
         playersDo { $0.play(at: startTime) }
@@ -180,8 +181,8 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
         rewindLoops()
         stopLoops()
         offlineRender.internalRenderEnabled = true
-
     }
+    
     func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
         docController = nil
         guard let url = controller.url else { return }
@@ -191,6 +192,7 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
             }
         }
     }
+    
     var mixDownURL: URL = {
         let tempDir = NSURL.fileURL(withPath: NSTemporaryDirectory(), isDirectory: true)
         return tempDir.appendingPathComponent("mixDown.m4a")
@@ -275,5 +277,4 @@ extension UIViewController {
         alert.addAction(.init(title: "OK", style: .default, handler: nil))
         return alert
     }
-
 }
