@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
@@ -57,6 +58,34 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(view)            
         }
     }
+    
+    func presentEffectPicker() {
+        let effectPickerViewController = EffectPickerViewController()
+        effectPickerViewController.delegate = self
+        self.addChildViewController(effectPickerViewController)
+        view.addSubview(effectPickerViewController.view)
+        effectPickerViewController.view.snp.makeConstraints { make in
+            make.edges.equalTo(effectsCollectionView)
+        }
+        effectPickerViewController.view.transform = CGAffineTransform(translationX: 0.0, y: effectsCollectionView.bounds.size.height)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            effectPickerViewController.view.transform = .identity
+        }) { _ in 
+            effectPickerViewController.didMove(toParentViewController: self)
+        }
+    }
+    
+    func dismissChildViewController() {
+        guard childViewControllers.count > 0 else { return }
+        let childViewController = childViewControllers[childViewControllers.count - 1]
+        childViewController.willMove(toParentViewController: nil)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            childViewController.view.transform = CGAffineTransform(translationX: 0.0, y: childViewController.view.bounds.size.height)
+        }) { _ in
+            childViewController.view.removeFromSuperview()
+            childViewController.removeFromParentViewController()
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -79,12 +108,26 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch viewModel.cellType(indexPath) {
+        case .addEffectCell:
+            presentEffectPicker()
+        default: break
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.bounds.size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
     }
 }
 
@@ -95,5 +138,18 @@ extension MainViewController: PlayerViewContollerDelegate {
     
     func selectLoopButtonWasTapped() {
         
+    }
+}
+
+extension MainViewController: EffectPickerDelegate {
+    func effectTypeWasSelected(_ effectType: EffectType) {
+        let newEffect = Effect(effectType: effectType)
+        viewModel.effects.append(newEffect)
+        effectsCollectionView.reloadData()
+        dismissChildViewController()
+    }
+    
+    func effectPickerWasCancelled() {
+        dismissChildViewController()
     }
 }

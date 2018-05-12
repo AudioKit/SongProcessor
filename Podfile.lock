@@ -11,12 +11,13 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/AudioKit/Specs.git:
     - AudioKit
+  https://github.com/CocoaPods/Specs.git:
     - SnapKit
 
 SPEC CHECKSUMS:
-  AudioKit: 90ed0de2bc50ab68306f4b424ae1622fc9149b8e
+  AudioKit: 91ffbe6fb54c82224791eec255ad1054727436a6
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 35c3f250a6067e1354256d9aa1f4e6fbf0a0a85a
+PODFILE CHECKSUM: 663d1fa0528832b9cb703e885dd483ed5c148c4e
 
 COCOAPODS: 1.5.0

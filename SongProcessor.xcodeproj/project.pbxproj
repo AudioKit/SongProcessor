@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7020D5F220A2FA860098F4B5 /* AddEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F120A2FA860098F4B5 /* AddEffectViewController.swift */; };
+		7020D5F220A2FA860098F4B5 /* EffectPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F120A2FA860098F4B5 /* EffectPickerViewController.swift */; };
 		7020D5F420A2FC840098F4B5 /* EffectPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F320A2FC840098F4B5 /* EffectPickerTableViewCell.swift */; };
 		704DA44620A2D48000442BA9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44520A2D48000442BA9 /* MainViewController.swift */; };
 		704DA44920A2D51000442BA9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44820A2D51000442BA9 /* PlayerViewController.swift */; };
@@ -58,7 +58,7 @@
 
 /* Begin PBXFileReference section */
 		2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.debug.xcconfig"; sourceTree = "<group>"; };
-		7020D5F120A2FA860098F4B5 /* AddEffectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEffectViewController.swift; sourceTree = "<group>"; };
+		7020D5F120A2FA860098F4B5 /* EffectPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectPickerViewController.swift; sourceTree = "<group>"; };
 		7020D5F320A2FC840098F4B5 /* EffectPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectPickerTableViewCell.swift; sourceTree = "<group>"; };
 		704DA44520A2D48000442BA9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		704DA44820A2D51000442BA9 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		7020D5F020A2FA6F0098F4B5 /* EffectPickerView */ = {
 			isa = PBXGroup;
 			children = (
-				7020D5F120A2FA860098F4B5 /* AddEffectViewController.swift */,
+				7020D5F120A2FA860098F4B5 /* EffectPickerViewController.swift */,
 				7020D5F320A2FC840098F4B5 /* EffectPickerTableViewCell.swift */,
 			);
 			path = EffectPickerView;
@@ -427,7 +427,7 @@
 				C4CB57671D1AFB8F00479598 /* LoopsViewController.swift in Sources */,
 				C4D4449E1DA9231B009B6AF6 /* EffectsViewController.swift in Sources */,
 				C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */,
-				7020D5F220A2FA860098F4B5 /* AddEffectViewController.swift in Sources */,
+				7020D5F220A2FA860098F4B5 /* EffectPickerViewController.swift in Sources */,
 				C4CB576E1D1AFC0300479598 /* VariableDelayViewController.swift in Sources */,
 				704DA44620A2D48000442BA9 /* MainViewController.swift in Sources */,
 				704DA44E20A2E22000442BA9 /* EffectCollectionViewCell.swift in Sources */,
