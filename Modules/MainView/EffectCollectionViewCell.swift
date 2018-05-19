@@ -40,6 +40,6 @@ class EffectCollectionViewCell: UICollectionViewCell {
     
     func configure(effect: Effect) {
         effectLabel.text = effect.effectType.name
-        backgroundColor = UIColor.effectColorForIndex(effect.effectType.rawValue)
+        backgroundColor = UIColor.colorForIndex(effect.effectType.rawValue)
     }
 }

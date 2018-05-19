@@ -38,6 +38,7 @@ class MainViewController: UIViewController {
         setupConstraints()
         
         playerViewController.didMove(toParentViewController: self)
+        playerViewController.delegate = self
     }
     
     func setupViews() {
@@ -59,19 +60,19 @@ class MainViewController: UIViewController {
         }
     }
     
-    func presentEffectPicker() {
-        let effectPickerViewController = EffectPickerViewController()
-        effectPickerViewController.delegate = self
-        self.addChildViewController(effectPickerViewController)
-        view.addSubview(effectPickerViewController.view)
-        effectPickerViewController.view.snp.makeConstraints { make in
+    func presentContentPicker(contentPickerType: ContentPickerType) {
+        let contentPickerViewController = ContentPickerViewController(contentPickerType: contentPickerType)
+        contentPickerViewController.delegate = self
+        self.addChildViewController(contentPickerViewController)
+        view.addSubview(contentPickerViewController.view)
+        contentPickerViewController.view.snp.makeConstraints { make in
             make.edges.equalTo(effectsCollectionView)
         }
-        effectPickerViewController.view.transform = CGAffineTransform(translationX: 0.0, y: effectsCollectionView.bounds.size.height)
+        contentPickerViewController.view.transform = CGAffineTransform(translationX: 0.0, y: effectsCollectionView.bounds.size.height)
         UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            effectPickerViewController.view.transform = .identity
+            contentPickerViewController.view.transform = .identity
         }) { _ in 
-            effectPickerViewController.didMove(toParentViewController: self)
+            contentPickerViewController.didMove(toParentViewController: self)
         }
     }
     
@@ -111,7 +112,7 @@ extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch viewModel.cellType(indexPath) {
         case .addEffectCell:
-            presentEffectPicker()
+            presentContentPicker(contentPickerType: .effect)
         default: break
         }
     }
@@ -137,19 +138,24 @@ extension MainViewController: PlayerViewContollerDelegate {
     }
     
     func selectLoopButtonWasTapped() {
-        
+        presentContentPicker(contentPickerType: .loop)
     }
 }
 
-extension MainViewController: EffectPickerDelegate {
+extension MainViewController: ContentPickerDelegate {
+    func loopTypeWasSelected(_ loopType: LoopType) {
+        viewModel.loopType = loopType
+        dismissChildViewController()
+    }
+    
+    func contentPickerWasCancelled() {
+        dismissChildViewController()
+    }
+    
     func effectTypeWasSelected(_ effectType: EffectType) {
         let newEffect = Effect(effectType: effectType)
         viewModel.effects.append(newEffect)
         effectsCollectionView.reloadData()
-        dismissChildViewController()
-    }
-    
-    func effectPickerWasCancelled() {
         dismissChildViewController()
     }
 }

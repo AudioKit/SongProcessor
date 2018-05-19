@@ -8,14 +8,14 @@
 
 import UIKit
 
-class EffectPickerTableViewCell: UITableViewCell {
+class ContentPickerTableViewCell: UITableViewCell {
     let pedalImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "EffectPedal"))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let effectLabel: UILabel = {
+    let contentLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
@@ -37,7 +37,7 @@ class EffectPickerTableViewCell: UITableViewCell {
     
     func setupViews() {
         contentView.addSubview(pedalImageView)
-        contentView.addSubview(effectLabel)
+        contentView.addSubview(contentLabel)
     }
     
     func setupConstraints() {
@@ -47,15 +47,20 @@ class EffectPickerTableViewCell: UITableViewCell {
             make.left.equalTo(contentView).offset(15.0)
             make.centerY.equalTo(contentView)
         }
-        effectLabel.snp.makeConstraints { make in
+        contentLabel.snp.makeConstraints { make in
             make.left.equalTo(pedalImageView.snp.right).offset(15.0)
             make.centerY.equalTo(contentView)
         }
     }
     
     func configure(effectType: EffectType) {
-        effectLabel.text = effectType.name
-        backgroundColor = UIColor.effectColorForIndex(effectType.rawValue)
+        contentLabel.text = effectType.name
+        backgroundColor = UIColor.colorForIndex(effectType.rawValue)
+    }
+    
+    func configure(loopType: LoopType) {
+        contentLabel.text = loopType.name
+        backgroundColor = UIColor.colorForIndex(loopType.rawValue)
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

@@ -18,7 +18,7 @@ extension UIColor {
         return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
     
-    class func effectColorForIndex(_ index: Int) -> UIColor {
+    class func colorForIndex(_ index: Int) -> UIColor {
         switch index % 6 {
         case 0: return UIColor.rgb(r: 299, g: 77, b: 66)
         case 1: return UIColor.rgb(r: 228, g: 128, b: 48)

@@ -50,6 +50,7 @@ enum EffectCellType {
 
 class MainViewModel {
     var effects = [Effect]()
+    var loopType: LoopType?
     
     var numberOfEffectCells: Int {
         return effects.count + 1

@@ -28,9 +28,11 @@ class PlayerViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Load Song", for: .normal)
         button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89), for: .normal)
+        button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89, a: 0.3), for: .highlighted)
         button.backgroundColor = UIColor.rgb(r: 247, g: 248, b: 252)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         button.layer.cornerRadius = 5.0
+        button.addTarget(self, action: #selector(loadSongButtonWasTapped), for: .touchUpInside)
         return button
     }()
     
@@ -38,9 +40,11 @@ class PlayerViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Select Loop", for: .normal)
         button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89), for: .normal)
+        button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89, a: 0.3), for: .highlighted)
         button.backgroundColor = UIColor.rgb(r: 247, g: 248, b: 252)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         button.layer.cornerRadius = 5.0
+        button.addTarget(self, action: #selector(selectLoopButtonWasTapped), for: .touchUpInside)
         return button
     }()
     
@@ -51,13 +55,13 @@ class PlayerViewController: UIViewController {
         setupConstraints()
     }
     
-    func setupViews() {
+    private func setupViews() {
         view.addSubview(trackImageView)
         view.addSubview(loadSongButton)
         view.addSubview(selectLoopButton)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         view.snp.makeConstraints { make in
             make.bottom.equalTo(selectLoopButton).offset(30.0)
         }
@@ -79,5 +83,13 @@ class PlayerViewController: UIViewController {
             make.left.equalTo(loadSongButton.snp.right).offset(20.0)
             make.centerY.equalTo(loadSongButton)
         }
+    }
+    
+    @objc private func loadSongButtonWasTapped() {
+        delegate?.loadSongButtonWasTapped()
+    }
+    
+    @objc private func selectLoopButtonWasTapped() {
+        delegate?.selectLoopButtonWasTapped()
     }
 }
