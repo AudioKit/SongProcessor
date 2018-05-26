@@ -9,11 +9,18 @@
 import UIKit
 
 class AddEffectCollectionViewCell: UICollectionViewCell {
+    let mainView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 5.0
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        return view
+    }()
+    
     let plusLabel: UILabel = {
         let label = UILabel()
         label.text = "+"
         label.font = UIFont.boldSystemFont(ofSize: 72.0)
-        label.textColor = UIColor.darkGray
+        label.textColor = UIColor.appDarkGray
         return label
     }()
     
@@ -21,7 +28,7 @@ class AddEffectCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Tap to add an effect"
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
-        label.textColor = UIColor.darkGray
+        label.textColor = UIColor.appDarkGray
         return label
     }()
     
@@ -33,7 +40,6 @@ class AddEffectCollectionViewCell: UICollectionViewCell {
         setupViews()
         setupConstraints()
         
-        backgroundColor = UIColor.rgb(r: 247, g: 248, b: 252)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,15 +47,19 @@ class AddEffectCollectionViewCell: UICollectionViewCell {
     }
     
     func setupViews() {
-        addSubview(labelContainer)
+        addSubview(mainView)
+        mainView.addSubview(labelContainer)
         labelContainer.addSubview(plusLabel)
         labelContainer.addSubview(tapToAddLabel)
     }
     
     func setupConstraints() {
+        mainView.snp.makeConstraints { make in
+            make.edges.equalTo(self).inset(UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0))
+        }
         labelContainer.snp.makeConstraints { make in
-            make.center.equalTo(self)
-            make.width.equalTo(self)
+            make.center.equalTo(mainView)
+            make.width.equalTo(mainView)
         }
         plusLabel.snp.makeConstraints { make in
             make.top.equalTo(labelContainer)

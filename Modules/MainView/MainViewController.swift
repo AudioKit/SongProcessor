@@ -21,16 +21,23 @@ class MainViewController: UIViewController {
         collectionView.register(AddEffectCollectionViewCell.self, forCellWithReuseIdentifier: EffectCellType.addEffectCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.appDarkGray // UIColor.rgb(r: 247, g: 248, b: 252)
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
+    let overlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
+        view.alpha = 0.0
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.appDarkGray
 
         self.addChildViewController(playerViewController)
         
@@ -44,6 +51,7 @@ class MainViewController: UIViewController {
     func setupViews() {
         view.addSubview(playerViewController.view)
         view.addSubview(effectsCollectionView)
+        view.addSubview(overlayView)
     }
     
     func setupConstraints() {
@@ -58,6 +66,12 @@ class MainViewController: UIViewController {
             make.right.equalTo(view)
             make.bottom.equalTo(view)            
         }
+        overlayView.snp.makeConstraints { make in
+            make.top.equalTo(view)
+            make.bottom.equalTo(playerViewController.view)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+        }
     }
     
     func presentContentPicker(contentPickerType: ContentPickerType) {
@@ -71,6 +85,7 @@ class MainViewController: UIViewController {
         contentPickerViewController.view.transform = CGAffineTransform(translationX: 0.0, y: effectsCollectionView.bounds.size.height)
         UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             contentPickerViewController.view.transform = .identity
+            self.overlayView.alpha = 0.3
         }) { _ in 
             contentPickerViewController.didMove(toParentViewController: self)
         }
@@ -81,7 +96,8 @@ class MainViewController: UIViewController {
         let childViewController = childViewControllers[childViewControllers.count - 1]
         childViewController.willMove(toParentViewController: nil)
         UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            childViewController.view.transform = CGAffineTransform(translationX: 0.0, y: childViewController.view.bounds.size.height)
+            childViewController.view.transform = CGAffineTransform(translationX: 0.0, y: childViewController.view.bounds.size.height)            
+            self.overlayView.alpha = 0.0
         }) { _ in
             childViewController.view.removeFromSuperview()
             childViewController.removeFromParentViewController()
@@ -133,6 +149,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainViewController: PlayerViewContollerDelegate {
+    func audioWasPaused() {
+        
+    }
+    
+    func audioWasPlayed() {
+
+    }
+    
     func loadSongButtonWasTapped() {
         
     }
@@ -145,6 +169,9 @@ extension MainViewController: PlayerViewContollerDelegate {
 extension MainViewController: ContentPickerDelegate {
     func loopTypeWasSelected(_ loopType: LoopType) {
         viewModel.loopType = loopType
+        playerViewController.loopWasLoaded(loopType: loopType)
+        SongProcessor.sharedInstance.playNew(loop: loopType.filename)
+        SongProcessor.sharedInstance.currentLoop = loopType
         dismissChildViewController()
     }
     
@@ -157,5 +184,6 @@ extension MainViewController: ContentPickerDelegate {
         viewModel.effects.append(newEffect)
         effectsCollectionView.reloadData()
         dismissChildViewController()
+        SongProcessor.sharedInstance.updateEffectsChain(effects: viewModel.effects)
     }
 }

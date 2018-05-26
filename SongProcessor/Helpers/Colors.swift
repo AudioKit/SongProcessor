@@ -28,4 +28,20 @@ extension UIColor {
         default: return UIColor.rgb(r: 47, g: 129, b: 183)
         }
     }
+    
+    static var appDarkerGray: UIColor {
+        return UIColor.rgb(r: 37, g: 41, b: 45)
+    }
+    
+    static var appDarkGray: UIColor {
+        return UIColor.rgb(r: 47, g: 52, b: 57)
+    }
+    
+    static var appLightGray: UIColor {
+        return UIColor.rgb(r: 222, g: 222, b: 222)
+    }
+    
+    static var appRed: UIColor {
+        return UIColor.rgb(r: 246, g: 15, b: 75)
+    }
 }

@@ -27,9 +27,11 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
     var bitCrushMixer = AKDryWetMixer()
     var playerBooster = AKBooster()
     var offlineRender = AKOfflineRenderNode()
-    var players = [String: AKPlayer]()
+    var player = AKPlayer()
     var playerMixer = AKMixer()
-
+    var isPlaying = false
+    var currentLoop: LoopType?
+    
     fileprivate var docController: UIDocumentInteractionController?
 
     var iTunesPlaying: Bool {
@@ -45,50 +47,37 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
             return iTunesFilePlayer?.isPlaying ?? false
         }
     }
+    
     var loopsPlaying: Bool {
         set {
             if newValue {
-                guard let firtPlayer = players.values.first else { return }
-                if !firtPlayer.isPlaying { playLoops() }
+                if !player.isPlaying { playLoops() }
             } else {
                 stopLoops()
             }
         }
         get {
-            return players.values.first?.isPlaying ?? false
+            return player.isPlaying 
         }
     }
 
     override init() {
         super.init()
-        for name in ["bass", "drum", "guitar", "lead"] {
-            do {
-                let audioFile = try AKAudioFile(readFileName: name+"loop.wav", baseDir: .resources)
-                players[name] = AKPlayer(audioFile: audioFile)
-                players[name]?.isLooping = true
-                players[name]?.connect(to: playerMixer)
-            } catch {
-                fatalError(String(describing: error))
-            }
-        }
-
+        
+        player.connect(to: playerMixer)
         playerMixer >>>
-            delayMixer >>>
-            filterMixer >>>
-            reverbMixer >>>
-            pitchMixer >>>
-            bitCrushMixer >>>
-            playerBooster >>>
         offlineRender
 
         AudioKit.output = offlineRender
 
+        /*
         playerMixer >>> variableDelay >>> delayMixer.wetInput
         delayMixer >>> moogLadder >>> filterMixer.wetInput
         filterMixer >>> reverb >>> reverbMixer.wetInput
         reverbMixer >>> pitchShifter >>> pitchMixer.wetInput
         pitchMixer >>> bitCrusher >>> bitCrushMixer.wetInput
-
+         */
+ 
         // Allow the app to play in the background
         do {
             try AKSettings.setSession(category: .playback, with: .mixWithOthers)
@@ -104,8 +93,38 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
         } catch {
             AKLog("AudioKit did not start!")
         }
+        
 
     }
+    
+    func updateEffectsChain(effects: [Effect]) {
+        do {
+            try AudioKit.stop()
+        } catch {
+            AKLog("AudioKit did not stop!")
+        }
+        var currentNode: AKInput = playerMixer
+        effects.forEach { effect in
+            currentNode.disconnectOutput()
+            currentNode >>> effect.node
+            currentNode = effect.node
+        }
+        currentNode >>> offlineRender
+        
+        AudioKit.output = offlineRender
+        initParameters()
+        do {
+            try AudioKit.start()
+        } catch {
+            AKLog("AudioKit did not start!")
+        }
+        if isPlaying {
+            if let currentLoop = currentLoop {
+                playNew(loop: currentLoop.filename)
+            }
+        }
+    }
+    
     func initParameters() {
 
         delayMixer.balance = 0
@@ -126,16 +145,34 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
 //        playersDo { $0.schedule(from: 0, to: $0.duration, avTime: nil)}
     }
     
+    func playNew(loop: String) {
+        do {
+            let audioFile = try AKAudioFile(readFileName: loop + "loop.wav", baseDir: .resources)
+            player.load(audioFile: audioFile)
+            player.isLooping = true
+            player.loop.start = 0
+            player.loop.end = player.duration
+            player.play()
+            player.volume = 0.0
+            isPlaying = true
+        } catch {
+            print(error)
+        }
+    }
+    
     func playLoops(at when: AVAudioTime? = nil) {
         let startTime = when ?? SongProcessor.twoRendersFromNow()
         playersDo { $0.play(at: startTime) }
     }
+    
     func stopLoops() {
         playersDo { $0.stop() }
     }
+    
     func playersDo(_ action: @escaping (AKPlayer) -> Void) {
-        for player in players.values { action(player) }
+        action(player)
     }
+    
     private class func twoRendersFromNow() -> AVAudioTime {
         let twoRenders = AVAudioTime.hostTime(forSeconds: AKSettings.bufferLength.duration * 2)
         return AVAudioTime(hostTime: mach_absolute_time() + twoRenders)
@@ -169,10 +206,6 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
 
         offlineRender.internalRenderEnabled = false
 
-        guard let player = players.values.first else {
-            offlineRender.internalRenderEnabled = true
-            throw NSError(domain: "SongProcessor", code: 1, userInfo: [NSLocalizedDescriptionKey: "No loop players!"])
-        }
         let duration = player.duration * Double(loops)
         let timeZero = AVAudioTime(sampleTime: 0, atRate: offlineRender.avAudioNode.inputFormat(forBus: 0).sampleRate)
         rewindLoops()

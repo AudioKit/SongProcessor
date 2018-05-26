@@ -48,10 +48,22 @@ class ContentPickerViewController: UIViewController {
         return tableView
     }()
     
+    lazy var cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89), for: .normal)
+        button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89, a: 0.3), for: .highlighted)
+        button.backgroundColor = UIColor.rgb(r: 247, g: 248, b: 252)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        button.layer.cornerRadius = 5.0
+        button.addTarget(self, action: #selector(cancelButtonWasTapped), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.darkGray
+        view.backgroundColor = UIColor.appDarkGray
         
         setupViews()
         setupConstraints()
@@ -59,12 +71,23 @@ class ContentPickerViewController: UIViewController {
     
     func setupViews() {
         view.addSubview(contentTableView)
+        view.addSubview(cancelButton)
     }
     
     func setupConstraints() {
         contentTableView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+        cancelButton.snp.makeConstraints { make in
+            make.height.equalTo(44.0)
+            make.bottom.equalTo(view).offset(-5.0)
+            make.left.equalTo(view).offset(5.0)
+            make.right.equalTo(view).offset(-5.0)
+        }
+    }
+    
+    @objc func cancelButtonWasTapped() {
+        delegate?.contentPickerWasCancelled()
     }
 }
 
@@ -111,6 +134,6 @@ extension ContentPickerViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 56.0
     }
 }

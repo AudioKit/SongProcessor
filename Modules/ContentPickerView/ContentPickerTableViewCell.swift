@@ -9,8 +9,14 @@
 import UIKit
 
 class ContentPickerTableViewCell: UITableViewCell {
+    let mainView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 5.0
+        return view
+    }()
+    
     let pedalImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "EffectPedal"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -26,6 +32,7 @@ class ContentPickerTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
+        backgroundColor = UIColor.clear
         
         setupViews()
         setupConstraints()
@@ -36,31 +43,40 @@ class ContentPickerTableViewCell: UITableViewCell {
     }
     
     func setupViews() {
-        contentView.addSubview(pedalImageView)
-        contentView.addSubview(contentLabel)
+        contentView.addSubview(mainView)
+        mainView.addSubview(pedalImageView)
+        mainView.addSubview(contentLabel)
     }
     
     func setupConstraints() {
+        mainView.snp.makeConstraints { make in
+            make.top.equalTo(contentView).offset(5.0)
+            make.right.equalTo(contentView).offset(-5.0)
+            make.bottom.equalTo(contentView)
+            make.left.equalTo(contentView).offset(5.0)
+        }
         pedalImageView.snp.makeConstraints { make in
             make.width.equalTo(20.0)
             make.height.equalTo(26.0)
-            make.left.equalTo(contentView).offset(15.0)
-            make.centerY.equalTo(contentView)
+            make.left.equalTo(mainView).offset(15.0)
+            make.centerY.equalTo(mainView)
         }
         contentLabel.snp.makeConstraints { make in
             make.left.equalTo(pedalImageView.snp.right).offset(15.0)
-            make.centerY.equalTo(contentView)
+            make.centerY.equalTo(mainView)
         }
     }
     
     func configure(effectType: EffectType) {
         contentLabel.text = effectType.name
-        backgroundColor = UIColor.colorForIndex(effectType.rawValue)
+        mainView.backgroundColor = UIColor.colorForIndex(effectType.rawValue)
+        pedalImageView.image = #imageLiteral(resourceName: "EffectPedal")
     }
     
     func configure(loopType: LoopType) {
         contentLabel.text = loopType.name
-        backgroundColor = UIColor.colorForIndex(loopType.rawValue)
+        mainView.backgroundColor = UIColor.colorForIndex(loopType.rawValue)
+        pedalImageView.image = #imageLiteral(resourceName: "SoundWave")
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

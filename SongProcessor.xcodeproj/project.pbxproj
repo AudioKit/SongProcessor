@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		70202E1020B059280049AB10 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70202E0F20B059280049AB10 /* Loop.swift */; };
+		70202E1320B1DA150049AB10 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70202E1220B1DA150049AB10 /* Effect.swift */; };
 		7020D5F220A2FA860098F4B5 /* ContentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F120A2FA860098F4B5 /* ContentPickerViewController.swift */; };
 		7020D5F420A2FC840098F4B5 /* ContentPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F320A2FC840098F4B5 /* ContentPickerTableViewCell.swift */; };
 		704DA44620A2D48000442BA9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44520A2D48000442BA9 /* MainViewController.swift */; };
@@ -29,7 +30,6 @@
 		C4CB57591D1AFB1500479598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4CB57571D1AFB1500479598 /* Main.storyboard */; };
 		C4CB575B1D1AFB1500479598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CB575A1D1AFB1500479598 /* Assets.xcassets */; };
 		C4CB575E1D1AFB1500479598 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4CB575C1D1AFB1500479598 /* LaunchScreen.storyboard */; };
-		C4CB57671D1AFB8F00479598 /* LoopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57661D1AFB8F00479598 /* LoopsViewController.swift */; };
 		C4CB576A1D1AFBCB00479598 /* MoogLadderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB57691D1AFBCB00479598 /* MoogLadderViewController.swift */; };
 		C4CB576C1D1AFBEB00479598 /* CostelloReverbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB576B1D1AFBEB00479598 /* CostelloReverbViewController.swift */; };
 		C4CB576E1D1AFC0300479598 /* VariableDelayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CB576D1D1AFC0300479598 /* VariableDelayViewController.swift */; };
@@ -60,6 +60,7 @@
 /* Begin PBXFileReference section */
 		2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.debug.xcconfig"; sourceTree = "<group>"; };
 		70202E0F20B059280049AB10 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
+		70202E1220B1DA150049AB10 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		7020D5F120A2FA860098F4B5 /* ContentPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPickerViewController.swift; sourceTree = "<group>"; };
 		7020D5F320A2FC840098F4B5 /* ContentPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPickerTableViewCell.swift; sourceTree = "<group>"; };
 		704DA44520A2D48000442BA9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				70202E0F20B059280049AB10 /* Loop.swift */,
+				70202E1220B1DA150049AB10 /* Effect.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -440,11 +442,11 @@
 				C4FB84BA1DB563D800B68B3D /* PitchShifterViewController.swift in Sources */,
 				704DA44920A2D51000442BA9 /* PlayerViewController.swift in Sources */,
 				C4CB57711D1AFC5200479598 /* AlbumsViewController.swift in Sources */,
+				70202E1320B1DA150049AB10 /* Effect.swift in Sources */,
 				C42C1F001D23B0550020D550 /* SongExporter.swift in Sources */,
 				70202E1020B059280049AB10 /* Loop.swift in Sources */,
 				C4CB57841D1AFCFE00479598 /* SongProcessor.swift in Sources */,
 				C4CB57751D1AFC7300479598 /* SongViewController.swift in Sources */,
-				C4CB57671D1AFB8F00479598 /* LoopsViewController.swift in Sources */,
 				C4D4449E1DA9231B009B6AF6 /* EffectsViewController.swift in Sources */,
 				C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */,
 				7020D5F220A2FA860098F4B5 /* ContentPickerViewController.swift in Sources */,

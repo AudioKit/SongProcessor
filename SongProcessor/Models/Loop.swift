@@ -26,4 +26,14 @@ enum LoopType: Int {
         case .mix: return "Mix"
         }
     }
+    
+    var filename: String {
+        switch self {
+        case .bass: return "bass"
+        case .drum: return "drum"
+        case .guitar: return "guitar"
+        case .lead: return "lead"
+        case .mix: return "mix"
+        }
+    }
 }
