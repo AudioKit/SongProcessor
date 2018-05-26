@@ -153,7 +153,6 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
             player.loop.start = 0
             player.loop.end = player.duration
             player.play()
-            player.volume = 0.0
             isPlaying = true
         } catch {
             print(error)
