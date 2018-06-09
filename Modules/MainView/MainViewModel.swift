@@ -11,11 +11,13 @@ import Foundation
 enum EffectCellType {
     case effectCell
     case addEffectCell
+    case pedalCell
     
     var identifier: String {
         switch self {
         case .effectCell: return "effectCollectionViewCell"
         case .addEffectCell: return "addEffectCollectionViewCell"
+        case .pedalCell: return "pedalCollectionViewCell"
         }
     }
 }
@@ -28,11 +30,26 @@ class MainViewModel {
         return effects.count + 1
     }
     
-    func effectForIndexPath(_ indexPath: IndexPath) -> Effect {
+    var numberOfPedalCells: Int {
+        return effects.count
+    }
+    
+    func effectForIndexPath(_ indexPath: IndexPath) -> Effect {        
         return effects[indexPath.item]
     }
     
-    func cellType(_ indexPath: IndexPath) -> EffectCellType {
+    func cellType(_ indexPath: IndexPath, pedal: Bool) -> EffectCellType {
+        if pedal { return EffectCellType.pedalCell }
         return indexPath.item == effects.count ? EffectCellType.addEffectCell : EffectCellType.effectCell
+    }
+    
+    func moveEffectAtIndexPath(_ indexPath: IndexPath, to: IndexPath) {
+        let effect = effects[indexPath.item]
+        effects.remove(at: indexPath.item)
+        effects.insert(effect, at: to.item)
+    }
+    
+    func deleteEffectAtIndexPath(_ indexPath: IndexPath) {
+        effects.remove(at: indexPath.item)
     }
 }

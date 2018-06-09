@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7006F0DF20CBFF91003B190A /* PedalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7006F0DE20CBFF91003B190A /* PedalCollectionViewCell.swift */; };
 		70202E1020B059280049AB10 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70202E0F20B059280049AB10 /* Loop.swift */; };
 		70202E1320B1DA150049AB10 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70202E1220B1DA150049AB10 /* Effect.swift */; };
 		7020D5F220A2FA860098F4B5 /* ContentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7020D5F120A2FA860098F4B5 /* ContentPickerViewController.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		2560BF1DA19732FB4E127A44 /* Pods-SongProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SongProcessor/Pods-SongProcessor.debug.xcconfig"; sourceTree = "<group>"; };
+		7006F0DE20CBFF91003B190A /* PedalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedalCollectionViewCell.swift; sourceTree = "<group>"; };
 		70202E0F20B059280049AB10 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		70202E1220B1DA150049AB10 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		7020D5F120A2FA860098F4B5 /* ContentPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPickerViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				704DA44B20A2DF9800442BA9 /* MainViewModel.swift */,
 				704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */,
 				704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */,
+				7006F0DE20CBFF91003B190A /* PedalCollectionViewCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				C4D4449E1DA9231B009B6AF6 /* EffectsViewController.swift in Sources */,
 				C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */,
 				7020D5F220A2FA860098F4B5 /* ContentPickerViewController.swift in Sources */,
+				7006F0DF20CBFF91003B190A /* PedalCollectionViewCell.swift in Sources */,
 				C4CB576E1D1AFC0300479598 /* VariableDelayViewController.swift in Sources */,
 				704DA44620A2D48000442BA9 /* MainViewController.swift in Sources */,
 				704DA44E20A2E22000442BA9 /* EffectCollectionViewCell.swift in Sources */,

@@ -159,6 +159,20 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
         }
     }
     
+    func playUrl(url: URL) {
+        do {
+            let audioFile = try AKAudioFile(forReading: url)
+            player.load(audioFile: audioFile)
+            player.isLooping = true
+            player.loop.start = 0
+            player.loop.end = player.duration
+            player.play()
+            isPlaying = true
+        } catch {
+            print(error)
+        }
+    }
+    
     func playLoops(at when: AVAudioTime? = nil) {
         let startTime = when ?? SongProcessor.twoRendersFromNow()
         playersDo { $0.play(at: startTime) }

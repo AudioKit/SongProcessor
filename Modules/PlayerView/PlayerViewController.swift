@@ -10,8 +10,7 @@ import UIKit
 import SnapKit
 
 protocol PlayerViewContollerDelegate: class {
-    func loadSongButtonWasTapped()
-    func selectLoopButtonWasTapped()
+    func loadButtonWasTapped()
     func audioWasPaused()
     func audioWasPlayed()
 }
@@ -23,7 +22,8 @@ class PlayerViewController: UIViewController {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 5.0
         imageView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.0
         return imageView
     }()
     
@@ -31,6 +31,7 @@ class PlayerViewController: UIViewController {
         let label = UILabel()
         label.textColor = UIColor.white.withAlphaComponent(0.7)
         label.font = UIFont.boldSystemFont(ofSize: 18.0)
+        label.alpha = 0.0
         return label
     }()
     
@@ -38,6 +39,7 @@ class PlayerViewController: UIViewController {
         let label = UILabel()
         label.textColor = UIColor.white.withAlphaComponent(0.7)
         label.font = UIFont.systemFont(ofSize: 14.0)
+        label.alpha = 0.0
         return label
     }()
     
@@ -51,35 +53,25 @@ class PlayerViewController: UIViewController {
         button.setImage(pauseImage, for: [.selected, .highlighted])
         button.tintColor = UIColor.appRed
         button.addTarget(self, action: #selector(pausePlayButtonWasTapped), for: .touchUpInside)
+        button.alpha = 0.0
         return button
     }()
     
-    let loadSongButton: UIButton = {
+    let loadButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Load Song", for: .normal)
+        button.setTitle("Tap to play a song or loop", for: .normal)
         button.setTitleColor(UIColor.appRed, for: .normal)
         button.setTitleColor(UIColor.appRed.withAlphaComponent(0.3), for: .highlighted)
-        button.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
         button.layer.cornerRadius = 5.0
-        button.addTarget(self, action: #selector(loadSongButtonWasTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    let selectLoopButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Select Loop", for: .normal)
-        button.setTitleColor(UIColor.appRed, for: .normal)
-        button.setTitleColor(UIColor.appRed.withAlphaComponent(0.3), for: .highlighted)
-        button.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
-        button.layer.cornerRadius = 5.0
-        button.addTarget(self, action: #selector(selectLoopButtonWasTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loadButtonWasTapped), for: .touchUpInside)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.appLightGray.withAlphaComponent(0.2)
         
         setupViews()
         setupConstraints()
@@ -89,58 +81,48 @@ class PlayerViewController: UIViewController {
         view.addSubview(trackImageView)
         view.addSubview(trackTitleLabel)
         view.addSubview(trackSubtitleLabel)
+        view.addSubview(loadButton)
         view.addSubview(pausePlayButton)
-        view.addSubview(loadSongButton)
-        view.addSubview(selectLoopButton)
     }
     
     private func setupConstraints() {
-        view.snp.makeConstraints { make in
-            make.bottom.equalTo(selectLoopButton).offset(30.0)
-        }
         trackImageView.snp.makeConstraints { make in
-            make.size.equalTo(70.0)
-            make.left.equalTo(20.0)
+            make.size.equalTo(44.0)
+            make.left.equalTo(10.0)
             make.top.equalTo(10.0)
         }
         trackTitleLabel.snp.makeConstraints { make in
-            make.left.equalTo(trackImageView.snp.right).offset(15.0)
-            make.top.equalTo(trackImageView).offset(10.0)
+            make.left.equalTo(trackImageView.snp.right).offset(10.0)
+            make.top.equalTo(trackImageView).offset(2.0)
         }
         pausePlayButton.snp.makeConstraints { make in
-            make.size.equalTo(60.0)
-            make.right.equalTo(selectLoopButton)
+            make.size.equalTo(44.0)
+            make.right.equalTo(view).offset(-10.0)
             make.centerY.equalTo(trackImageView)
         }
         trackSubtitleLabel.snp.makeConstraints { make in
-            make.left.equalTo(trackImageView.snp.right).offset(15.0)
-            make.top.equalTo(trackTitleLabel.snp.bottom).offset(2.0)
+            make.left.equalTo(trackImageView.snp.right).offset(10.0)
+            make.top.equalTo(trackTitleLabel.snp.bottom)
         }
-        loadSongButton.snp.makeConstraints { make in
-            make.height.equalTo(44.0)
-            make.width.equalTo(selectLoopButton)
-            make.left.equalTo(view).offset(20.0)
-            make.right.equalTo(selectLoopButton.snp.left).offset(-10.0)
-            make.top.equalTo(trackImageView.snp.bottom).offset(10.0)
-        }
-        selectLoopButton.snp.makeConstraints { make in
-            make.height.equalTo(44.0)
-            make.right.equalTo(view).offset(-20.0)
-            make.left.equalTo(loadSongButton.snp.right).offset(20.0)
-            make.centerY.equalTo(loadSongButton)
+        loadButton.snp.makeConstraints { make in
+            make.height.equalTo(64.0)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.top.equalTo(view)
         }
     }
     
-    @objc private func loadSongButtonWasTapped() {
-        delegate?.loadSongButtonWasTapped()
-    }
-    
-    @objc private func selectLoopButtonWasTapped() {
-        delegate?.selectLoopButtonWasTapped()
+    @objc private func loadButtonWasTapped() {
+        delegate?.loadButtonWasTapped()
     }
     
     @objc private func pausePlayButtonWasTapped() {
         pausePlayButton.isSelected = !pausePlayButton.isSelected
+        if pausePlayButton.isSelected {
+            delegate?.audioWasPlayed()
+        } else {
+            delegate?.audioWasPaused()
+        }
     }
     
     public func loopWasLoaded(loopType: LoopType) {
@@ -149,5 +131,28 @@ class PlayerViewController: UIViewController {
         trackTitleLabel.text = loopType.name
         trackSubtitleLabel.text = "Audio Loop"
         pausePlayButton.isSelected = true
+        
+        UIView.animate(withDuration: 0.3) {
+            self.loadButton.setTitle(nil, for: .normal)
+            self.trackImageView.alpha = 1.0
+            self.trackTitleLabel.alpha = 1.0
+            self.trackSubtitleLabel.alpha = 1.0
+            self.pausePlayButton.alpha = 1.0
+        }
+    }
+    
+    public func songWasPlayed(title: String?, artist: String?, image: UIImage?) {
+        trackImageView.image = image
+        trackTitleLabel.text = title
+        trackSubtitleLabel.text = artist
+        pausePlayButton.isSelected = true
+        
+        UIView.animate(withDuration: 0.3) {
+            self.loadButton.setTitle(nil, for: .normal)
+            self.trackImageView.alpha = 1.0
+            self.trackTitleLabel.alpha = 1.0
+            self.trackSubtitleLabel.alpha = 1.0
+            self.pausePlayButton.alpha = 1.0
+        }
     }
 }

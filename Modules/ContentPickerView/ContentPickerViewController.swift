@@ -54,7 +54,7 @@ class ContentPickerViewController: UIViewController {
         button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89), for: .normal)
         button.setTitleColor(UIColor.rgb(r: 249, g: 49, b: 89, a: 0.3), for: .highlighted)
         button.backgroundColor = UIColor.rgb(r: 247, g: 248, b: 252)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
         button.layer.cornerRadius = 5.0
         button.addTarget(self, action: #selector(cancelButtonWasTapped), for: .touchUpInside)
         return button
@@ -79,8 +79,12 @@ class ContentPickerViewController: UIViewController {
             make.edges.equalTo(view)
         }
         cancelButton.snp.makeConstraints { make in
-            make.height.equalTo(44.0)
-            make.bottom.equalTo(view).offset(-5.0)
+            make.height.equalTo(54.0)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-5.0)
+            } else {
+                make.bottom.equalTo(view).offset(-5.0)
+            }
             make.left.equalTo(view).offset(5.0)
             make.right.equalTo(view).offset(-5.0)
         }
