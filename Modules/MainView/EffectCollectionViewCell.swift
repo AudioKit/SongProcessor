@@ -17,6 +17,12 @@ class EffectCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    let resetButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "ResetIcon"), for: .normal)
+        return button
+    }()
+    
     let effectLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 26.0)
@@ -28,6 +34,15 @@ class EffectCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "TrashIcon"), for: .normal)
         return button
+    }()
+    
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(EffectSliderTableViewCell.self, forCellReuseIdentifier: EffectCellType.effectSliderCell.identifier)
+        tableView.contentInset = UIEdgeInsets(top: 100.0, left: 0.0, bottom: 0.0, right: 0.0)
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        return tableView    
     }()
     
     override init(frame: CGRect) {
@@ -43,8 +58,10 @@ class EffectCollectionViewCell: UICollectionViewCell {
     
     func setupViews() {
         addSubview(mainView)
+        mainView.addSubview(tableView)
+        mainView.addSubview(resetButton)
         mainView.addSubview(effectLabel)
-        mainView.addSubview(trashButton)
+        mainView.addSubview(trashButton)        
     }
     
     func setupConstraints() {
@@ -55,10 +72,18 @@ class EffectCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(mainView).offset(20.0)
             make.centerX.equalTo(mainView)
         }
+        resetButton.snp.makeConstraints { make in
+            make.size.equalTo(44.0)
+            make.centerY.equalTo(effectLabel)
+            make.left.equalTo(mainView).offset(10.0)
+        }
         trashButton.snp.makeConstraints { make in
             make.size.equalTo(44.0)
             make.centerY.equalTo(effectLabel)
             make.right.equalTo(mainView).offset(-10.0)
+        }
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(mainView)
         }
     }
     

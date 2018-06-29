@@ -161,6 +161,25 @@ class MainViewController: UIViewController {
         pedalsCollectionView.deleteItems(at: [indexPath])
         SongProcessor.sharedInstance.updateEffectsChain(effects: viewModel.effects)
     }
+    
+    @objc func resetButtonWasTapped(button: UIButton) {
+        let indexPath = IndexPath(item: button.tag, section: 0)
+        let effect = viewModel.effectForIndexPath(indexPath)
+        effect.values = effect.effectType.values
+        effectsCollectionView.reloadData()
+        for effectValue in effect.values {
+            effect.updateValue(valueType: effectValue.type, value: effectValue.value)
+        }
+    }
+    
+    @objc func sliderValueWasChanged(slider: UISlider) {
+        guard let currentIndexPath = effectsCollectionView.indexPathForItem(at: view.convert(view.center, to: effectsCollectionView)) else { return }
+        let effect = viewModel.effectForIndexPath(currentIndexPath)
+        guard slider.tag < effect.values.count else { return }
+        let effectValue = effect.values[slider.tag].type
+        effect.updateValue(valueType: effectValue, value: Double(slider.value))
+        print(slider.value)
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -177,10 +196,17 @@ extension MainViewController: UICollectionViewDataSource {
         switch cellType {
         case .effectCell:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as! EffectCollectionViewCell
+            cell.tableView.tag = indexPath.item
+            cell.tableView.dataSource = self
+            cell.tableView.delegate = self
             cell.configure(effect: viewModel.effectForIndexPath(indexPath))
+            cell.tableView.reloadData()
             cell.trashButton.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
             cell.trashButton.tag = indexPath.item
             cell.trashButton.addTarget(self, action: #selector(trashButtonWasTapped(button:)), for: .touchUpInside)
+            cell.resetButton.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
+            cell.resetButton.tag = indexPath.item
+            cell.resetButton.addTarget(self, action: #selector(resetButtonWasTapped(button:)), for: .touchUpInside)
             return cell
         case .addEffectCell:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as! AddEffectCollectionViewCell
@@ -189,6 +215,7 @@ extension MainViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as! PedalCollectionViewCell
             cell.configure(effect: viewModel.effectForIndexPath(indexPath))
             return cell
+        default: return UICollectionViewCell()
         }
     }
 }
@@ -304,5 +331,32 @@ extension MainViewController: MPMediaPickerControllerDelegate {
         
         SongProcessor.sharedInstance.playUrl(url: url)
         playerViewController.songWasPlayed(title: mediaItem.title, artist: mediaItem.artist, image: mediaItem.artwork?.image(at: CGSize(width: 44.0, height: 44.0)))
+    }
+    
+    func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let effect = viewModel.effectForIndexPath(IndexPath(item: tableView.tag, section: 0))
+        return effect.values.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EffectCellType.effectSliderCell.identifier, for: indexPath) as! EffectSliderTableViewCell
+        let effect = viewModel.effectForIndexPath(IndexPath(item: tableView.tag, section: 0))
+        cell.configure(effectValue: effect.values[indexPath.row])
+        cell.slider.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
+        cell.slider.tag = indexPath.row
+        cell.slider.addTarget(self, action: #selector(sliderValueWasChanged(slider:)), for: UIControlEvents.valueChanged)
+        return cell
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
     }
 }

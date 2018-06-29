@@ -12,12 +12,14 @@ enum EffectCellType {
     case effectCell
     case addEffectCell
     case pedalCell
+    case effectSliderCell
     
     var identifier: String {
         switch self {
         case .effectCell: return "effectCollectionViewCell"
         case .addEffectCell: return "addEffectCollectionViewCell"
         case .pedalCell: return "pedalCollectionViewCell"
+        case .effectSliderCell: return "effectSliderTableViewCell"
         }
     }
 }

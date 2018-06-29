@@ -18,6 +18,7 @@
 		704DA44E20A2E22000442BA9 /* EffectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */; };
 		704DA45320A2E26800442BA9 /* AddEffectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */; };
 		704DA45720A2E49500442BA9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DA45620A2E49500442BA9 /* Colors.swift */; };
+		70696EAD20E5146E00BCBFA0 /* EffectSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70696EAC20E5146E00BCBFA0 /* EffectSliderTableViewCell.swift */; };
 		A15134900EDED172676B153E /* Pods_SongProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */; };
 		C40244491DB56A0500617B38 /* BitCrusherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40244481DB56A0500617B38 /* BitCrusherViewController.swift */; };
 		C42C1F001D23B0550020D550 /* SongExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C1EFF1D23B0550020D550 /* SongExporter.swift */; };
@@ -71,6 +72,7 @@
 		704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectCollectionViewCell.swift; sourceTree = "<group>"; };
 		704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEffectCollectionViewCell.swift; sourceTree = "<group>"; };
 		704DA45620A2E49500442BA9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Helpers/Colors.swift; sourceTree = "<group>"; };
+		70696EAC20E5146E00BCBFA0 /* EffectSliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectSliderTableViewCell.swift; sourceTree = "<group>"; };
 		B735785F24CA238E02E11F1B /* Pods_SongProcessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SongProcessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40244481DB56A0500617B38 /* BitCrusherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitCrusherViewController.swift; sourceTree = "<group>"; };
 		C42C1EFF1D23B0550020D550 /* SongExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongExporter.swift; path = AudioKit/SongExporter.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				704DA44D20A2E22000442BA9 /* EffectCollectionViewCell.swift */,
 				704DA45220A2E26800442BA9 /* AddEffectCollectionViewCell.swift */,
 				7006F0DE20CBFF91003B190A /* PedalCollectionViewCell.swift */,
+				70696EAC20E5146E00BCBFA0 /* EffectSliderTableViewCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				704DA45320A2E26800442BA9 /* AddEffectCollectionViewCell.swift in Sources */,
 				704DA45720A2E49500442BA9 /* Colors.swift in Sources */,
 				C4FB84BA1DB563D800B68B3D /* PitchShifterViewController.swift in Sources */,
+				70696EAD20E5146E00BCBFA0 /* EffectSliderTableViewCell.swift in Sources */,
 				704DA44920A2D51000442BA9 /* PlayerViewController.swift in Sources */,
 				C4CB57711D1AFC5200479598 /* AlbumsViewController.swift in Sources */,
 				70202E1320B1DA150049AB10 /* Effect.swift in Sources */,
