@@ -33,7 +33,9 @@ enum EffectType: Int {
     var values: [EffectValue] {
         switch self {
         case .delay: return [(.time, 1.0, 0.0, 10.0), (.feedback, 0.5, 0, 1), (.lowPassCutoff, 15000, 0.0, 30000), (.dryWetMix, 0.5, 0.0, 1.0)]
-        case .pitchShifter: return [(.shift, AKPitchShifter.defaultShift, AKPitchShifter.shiftRange.lowerBound, AKPitchShifter.shiftRange.upperBound), (.rampTime, 1.0, 0.0, 1.0), (.windowSize, AKPitchShifter.defaultWindowSize, AKPitchShifter.windowSizeRange.lowerBound, AKPitchShifter.windowSizeRange.upperBound), (.crossFade, AKPitchShifter.defaultCrossfade, AKPitchShifter.crossfadeRange.lowerBound, AKPitchShifter.crossfadeRange.upperBound)]
+        case .pitchShifter: return [(.shift, AKPitchShifter.defaultShift, AKPitchShifter.shiftRange.lowerBound, AKPitchShifter.shiftRange.upperBound), (.windowSize, AKPitchShifter.defaultWindowSize, AKPitchShifter.windowSizeRange.lowerBound, AKPitchShifter.windowSizeRange.upperBound), (.crossFade, AKPitchShifter.defaultCrossfade, AKPitchShifter.crossfadeRange.lowerBound, AKPitchShifter.crossfadeRange.upperBound)]
+        case .moogLadder: return [(.resonance, AKMoogLadder.defaultResonance, AKMoogLadder.resonanceRange.lowerBound, AKMoogLadder.resonanceRange.upperBound), (.cutOffFrequency, AKMoogLadder.defaultCutoffFrequency, AKMoogLadder.cutoffFrequencyRange.lowerBound, AKMoogLadder.cutoffFrequencyRange.upperBound)]
+        case .bitCrusher: return [(.bitDepth, AKBitCrusher.defaultBitDepth, AKBitCrusher.bitDepthRange.lowerBound, AKBitCrusher.bitDepthRange.upperBound), (.sampleRate, AKBitCrusher.defaultSampleRate, AKBitCrusher.sampleRateRange.lowerBound, AKBitCrusher.sampleRateRange.upperBound)]
         default: return [EffectValue]()
         }
     }
@@ -48,6 +50,10 @@ enum ValueType: Int {
     case shift
     case windowSize
     case crossFade
+    case cutOffFrequency
+    case resonance
+    case sampleRate
+    case bitDepth
     
     var name: String {
         switch self {
@@ -59,6 +65,10 @@ enum ValueType: Int {
         case .shift: return "Shift"
         case .windowSize: return "Window Size"
         case .crossFade: return "Cross Fade"
+        case .cutOffFrequency: return "Cutoff Frequency"
+        case .resonance: return "Resonance"
+        case .sampleRate: return "Sample Rate"
+        case .bitDepth: return "Bit Depth"
         }
     }
 }
@@ -105,9 +115,22 @@ class Effect {
             guard let pitchShifter = node as? AKPitchShifter else { break }
             switch valueType {
             case .shift: pitchShifter.shift = value
-            case .rampTime: pitchShifter.rampTime = value
             case .crossFade: pitchShifter.crossfade = value
             case .windowSize: pitchShifter.windowSize = value
+            default: break
+            }
+        case .moogLadder:
+            guard let moogLadder = node as? AKMoogLadder else { break }
+            switch valueType {
+            case .resonance: moogLadder.resonance = value
+            case .cutOffFrequency: moogLadder.cutoffFrequency = value
+            default: break
+            }
+        case .bitCrusher:
+            guard let bitCrusher = node as? AKBitCrusher else { break }
+            switch valueType {
+            case .bitDepth: bitCrusher.bitDepth = value
+            case .sampleRate: bitCrusher.sampleRate = value
             default: break
             }
         default: break

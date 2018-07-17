@@ -12,6 +12,7 @@ enum EffectCellType {
     case effectCell
     case addEffectCell
     case pedalCell
+    case addPedalCell
     case effectSliderCell
     
     var identifier: String {
@@ -19,6 +20,7 @@ enum EffectCellType {
         case .effectCell: return "effectCollectionViewCell"
         case .addEffectCell: return "addEffectCollectionViewCell"
         case .pedalCell: return "pedalCollectionViewCell"
+        case .addPedalCell: return "addPedalCollectionViewCell"
         case .effectSliderCell: return "effectSliderTableViewCell"
         }
     }
@@ -33,7 +35,7 @@ class MainViewModel {
     }
     
     var numberOfPedalCells: Int {
-        return effects.count
+        return effects.count + 1
     }
     
     func effectForIndexPath(_ indexPath: IndexPath) -> Effect {        
@@ -41,7 +43,7 @@ class MainViewModel {
     }
     
     func cellType(_ indexPath: IndexPath, pedal: Bool) -> EffectCellType {
-        if pedal { return EffectCellType.pedalCell }
+        if pedal { return indexPath.item == effects.count ? EffectCellType.addPedalCell : EffectCellType.pedalCell }
         return indexPath.item == effects.count ? EffectCellType.addEffectCell : EffectCellType.effectCell
     }
     

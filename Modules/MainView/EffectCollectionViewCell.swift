@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioKitUI
 
 class EffectCollectionViewCell: UICollectionViewCell {
     let mainView: UIView = {
@@ -15,6 +16,16 @@ class EffectCollectionViewCell: UICollectionViewCell {
         view.layer.borderWidth = 5.0
         view.layer.borderColor = UIColor(white: 155.0/255.0, alpha: 0.5).cgColor
         return view
+    }()
+    
+    let audioPlotView: AKNodeOutputPlot = {
+        let plot = AKNodeOutputPlot(frame: CGRect.zero)
+        plot.plotType = EZPlotType.buffer
+        plot.color = UIColor.white
+        plot.backgroundColor = UIColor.clear
+        plot.shouldFill = true
+        plot.shouldMirror = true
+        return plot
     }()
     
     let resetButton: UIButton = {
@@ -42,6 +53,8 @@ class EffectCollectionViewCell: UICollectionViewCell {
         tableView.contentInset = UIEdgeInsets(top: 100.0, left: 0.0, bottom: 0.0, right: 0.0)
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.delaysContentTouches = false
+
         return tableView    
     }()
     
@@ -61,7 +74,8 @@ class EffectCollectionViewCell: UICollectionViewCell {
         mainView.addSubview(tableView)
         mainView.addSubview(resetButton)
         mainView.addSubview(effectLabel)
-        mainView.addSubview(trashButton)        
+        mainView.addSubview(trashButton)
+        mainView.addSubview(audioPlotView)
     }
     
     func setupConstraints() {
@@ -85,10 +99,17 @@ class EffectCollectionViewCell: UICollectionViewCell {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(mainView)
         }
+        audioPlotView.snp.makeConstraints { make in
+            make.top.equalTo(effectLabel.snp.bottom).offset(10.0)
+            make.left.equalTo(mainView).offset(5.0)
+            make.right.equalTo(mainView).offset(-5.0)
+            make.height.equalTo(50.0)
+        }
     }
     
     func configure(effect: Effect) {
         effectLabel.text = effect.effectType.name
         mainView.backgroundColor = UIColor.colorForIndex(effect.effectType.rawValue)
+        audioPlotView.node = effect.node as? AKNode
     }
 }

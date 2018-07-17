@@ -49,6 +49,7 @@ class EffectSliderTableViewCell: UITableViewCell {
             make.left.equalTo(contentView).offset(30.0)
             make.right.equalTo(contentView).offset(-30.0)
             make.top.equalTo(contentView).offset(40.0)
+            make.height.equalTo(50.0)
         }
     }
     

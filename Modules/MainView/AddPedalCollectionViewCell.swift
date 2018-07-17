@@ -8,24 +8,20 @@
 
 import UIKit
 
-class PedalCollectionViewCell: UICollectionViewCell {
+class AddPedalCollectionViewCell: UICollectionViewCell {
     let mainView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5.0
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         return view
-    }()
-    
-    let pedalImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
     }()
     
     let contentLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = UIColor.appDarkGray
         label.font = UIFont.boldSystemFont(ofSize: 14.0)
         label.adjustsFontSizeToFitWidth = true
+        label.text = "Add Effect";
         return label
     }()
     
@@ -44,7 +40,6 @@ class PedalCollectionViewCell: UICollectionViewCell {
     
     func setupViews() {
         addSubview(mainView)
-        mainView.addSubview(pedalImageView)
         mainView.addSubview(contentLabel)
     }
     
@@ -55,27 +50,17 @@ class PedalCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(self)
             make.left.equalTo(self).offset(3.0)
         }
-        pedalImageView.snp.makeConstraints { make in
-            make.width.equalTo(20.0)
-            make.height.equalTo(26.0)
-            make.left.equalTo(mainView).offset(15.0)
-            make.centerY.equalTo(mainView)
-        }
         contentLabel.snp.makeConstraints { make in
-            make.left.equalTo(pedalImageView.snp.right).offset(15.0)
-            make.centerY.equalTo(mainView)
+            make.center.equalTo(mainView)
         }
     }
     
     func configure(effect: Effect) {
         contentLabel.text = effect.effectType.name
         mainView.backgroundColor = UIColor.colorForIndex(effect.effectType.rawValue)
-        pedalImageView.image = #imageLiteral(resourceName: "EffectPedal")
     }
     
     func configureAsAddButton() {
         contentLabel.text = "Add Effect"
-        mainView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-        pedalImageView.image = nil
     }
 }

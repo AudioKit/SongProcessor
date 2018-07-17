@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         collectionView.backgroundColor = UIColor.appDarkGray
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delaysContentTouches = false
         return collectionView
     }()
     
@@ -34,6 +35,7 @@ class MainViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.register(PedalCollectionViewCell.self, forCellWithReuseIdentifier: EffectCellType.pedalCell.identifier)
+        collectionView.register(AddPedalCollectionViewCell.self, forCellWithReuseIdentifier: EffectCellType.addPedalCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.appDarkGray
@@ -215,6 +217,10 @@ extension MainViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as! PedalCollectionViewCell
             cell.configure(effect: viewModel.effectForIndexPath(indexPath))
             return cell
+        case .addPedalCell:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as! AddPedalCollectionViewCell
+            cell.configureAsAddButton()
+            return cell
         default: return UICollectionViewCell()
         }
     }
@@ -226,7 +232,7 @@ extension MainViewController: UICollectionViewDelegate {
         case .pedalCell:
             effectsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             pedalsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        case .addEffectCell:
+        case .addEffectCell, .addPedalCell:
             presentContentPicker(contentPickerType: .effect)
         default: break
         }
@@ -240,6 +246,12 @@ extension MainViewController: UICollectionViewDelegate {
         viewModel.moveEffectAtIndexPath(sourceIndexPath, to: destinationIndexPath)
         effectsCollectionView.reloadData()
         SongProcessor.sharedInstance.updateEffectsChain(effects: viewModel.effects)
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? EffectCollectionViewCell {
+            cell.audioPlotView.node = nil
+        }
     }
 }
 
@@ -262,7 +274,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if collectionView == pedalsCollectionView {
-            return UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
+            return UIEdgeInsets(top: 0.0, left: 7.0, bottom: 0.0, right: 7.0)
         } else {
             return UIEdgeInsets.zero
         }
