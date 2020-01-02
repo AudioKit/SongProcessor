@@ -1,23 +1,25 @@
 PODS:
-  - AudioKit (4.2.4):
-    - AudioKit/UI (= 4.2.4)
-  - AudioKit/UI (4.2.4)
-  - SnapKit (4.0.0)
+  - AudioKit (4.9.3):
+    - AudioKit/Core (= 4.9.3)
+    - AudioKit/UI (= 4.9.3)
+  - AudioKit/Core (4.9.3)
+  - AudioKit/UI (4.9.3):
+    - AudioKit/Core
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - AudioKit
   - SnapKit
 
 SPEC REPOS:
-  https://github.com/AudioKit/Specs.git:
-    - AudioKit
   https://github.com/CocoaPods/Specs.git:
+    - AudioKit
     - SnapKit
 
 SPEC CHECKSUMS:
-  AudioKit: 91ffbe6fb54c82224791eec255ad1054727436a6
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  AudioKit: d025ecbb68f567bba15dab7ea80b8991155729f9
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
 PODFILE CHECKSUM: 663d1fa0528832b9cb703e885dd483ed5c148c4e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.8.3

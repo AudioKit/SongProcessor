@@ -82,7 +82,8 @@ class MainViewController: UIViewController {
             make.right.equalTo(view)
             make.bottom.equalTo(pedalsCollectionView.snp.top)
         }
-        pedalsCollectionView.snp.makeConstraints { make in            make.bottom.equalTo(playerViewController.view.snp.top).offset(-10.0)
+        pedalsCollectionView.snp.makeConstraints { make in
+            make.bottom.equalTo(playerViewController.view.snp.top).offset(-10.0)
             make.left.equalTo(view)
             make.right.equalTo(view)
             make.height.equalTo(54.0)
@@ -291,7 +292,7 @@ extension MainViewController: PlayerViewContollerDelegate {
     }
     
     func loadButtonWasTapped() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
         let loadSongAction = UIAlertAction(title: "Play a song from iTunes Library", style: UIAlertActionStyle.default) { action in
             self.loadSongButtonWasTapped()

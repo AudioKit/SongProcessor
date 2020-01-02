@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioKit
 import AudioKitUI
 
 class EffectCollectionViewCell: UICollectionViewCell {

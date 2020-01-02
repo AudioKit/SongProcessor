@@ -26,7 +26,6 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
     var bitCrusher = AKBitCrusher()
     var bitCrushMixer = AKDryWetMixer()
     var playerBooster = AKBooster()
-    var offlineRender = AKOfflineRenderNode()
     var player = AKPlayer()
     var playerMixer = AKMixer()
     var isPlaying = false
@@ -64,11 +63,9 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
     override init() {
         super.init()
         
-        player.connect(to: playerMixer)
-        playerMixer >>>
-        offlineRender
+        player >>> playerMixer
 
-        AudioKit.output = offlineRender
+        AudioKit.output = playerMixer
 
         /*
         playerMixer >>> variableDelay >>> delayMixer.wetInput
@@ -86,7 +83,6 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
         }
         AKSettings.playbackWhileMuted = true
 
-        AudioKit.output = offlineRender
         initParameters()
         do {
             try AudioKit.start()
@@ -109,9 +105,11 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
             currentNode >>> effect.node
             currentNode = effect.node
         }
-        currentNode >>> offlineRender
-        
-        AudioKit.output = offlineRender
+
+        let mixer = AKMixer()
+        currentNode >>> mixer
+
+        AudioKit.output = mixer
         initParameters()
         do {
             try AudioKit.start()
@@ -198,35 +196,29 @@ class SongProcessor: NSObject, UIDocumentInteractionControllerDelegate {
 
     fileprivate func mixDownItunes(url: URL) throws {
 
-        offlineRender.internalRenderEnabled = false
-
         guard let player = iTunesFilePlayer else {
-            offlineRender.internalRenderEnabled = true
             throw NSError(domain: "SongProcessor", code: 1, userInfo: [NSLocalizedDescriptionKey: "Target itunes but no player exists"])
         }
         let duration = player.duration
         player.play(from: 0)
 //        player.schedule(from: 0, to: duration, avTime: nil)
-        let timeZero = AVAudioTime(sampleTime: 0, atRate: offlineRender.avAudioNode.inputFormat(forBus: 0).sampleRate)
+        let timeZero = AVAudioTime(hostTime: 0)
 
         player.play(at:timeZero)
-        try offlineRender.renderToURL(url, seconds: duration)
+        let audioFile = try AKAudioFile(forReading: url)
+        try AudioKit.renderToFile(audioFile, duration: duration)
         player.stop()
-        offlineRender.internalRenderEnabled = true
 
     }
     fileprivate func mixDownLoops(url: URL, loops: Int) throws {
-
-        offlineRender.internalRenderEnabled = false
-
         let duration = player.duration * Double(loops)
-        let timeZero = AVAudioTime(sampleTime: 0, atRate: offlineRender.avAudioNode.inputFormat(forBus: 0).sampleRate)
+        let timeZero = AVAudioTime(hostTime: 0)
         rewindLoops()
         playLoops(at: timeZero)
-        try offlineRender.renderToURL(url, seconds: duration)
+        let audioFile = try AKAudioFile(forReading: url)
+        try AudioKit.renderToFile(audioFile, duration: duration)
         rewindLoops()
         stopLoops()
-        offlineRender.internalRenderEnabled = true
     }
     
     func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
