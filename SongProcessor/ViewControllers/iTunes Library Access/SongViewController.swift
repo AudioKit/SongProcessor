@@ -53,7 +53,7 @@ class SongViewController: UIViewController {
 
                             self.loadSong()
                             self.playButton.isUserInteractionEnabled = true
-                            self.playButton.setTitle("Play", for: UIControlState())
+                            self.playButton.setTitle("Play", for: UIControl.State())
 
                         } else {
                             fail()
@@ -68,7 +68,7 @@ class SongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        playButton.setTitle("Loading", for: UIControlState())
+        playButton.setTitle("Loading", for: UIControl.State())
         playButton.isUserInteractionEnabled = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(barButton:)))
 
@@ -82,7 +82,7 @@ class SongViewController: UIViewController {
 
     @IBAction func play(_ sender: UIButton) {
         songProcessor.iTunesPlaying = !songProcessor.iTunesPlaying
-        playButton.setTitle(songProcessor.iTunesPlaying ? "Stop" : "Play", for: UIControlState())
+        playButton.setTitle(songProcessor.iTunesPlaying ? "Stop" : "Play", for: UIControl.State())
     }
 
     func loadSong() {

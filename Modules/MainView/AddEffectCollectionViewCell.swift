@@ -55,7 +55,7 @@ class AddEffectCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints() {
         mainView.snp.makeConstraints { make in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0))
+            make.edges.equalTo(self).inset(UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0))
         }
         labelContainer.snp.makeConstraints { make in
             make.center.equalTo(mainView)

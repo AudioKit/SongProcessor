@@ -45,10 +45,10 @@ class PlayerViewController: UIViewController {
     
     let pausePlayButton: UIButton = {
         let button = UIButton()
-        let playImage = UIImage(named: "PlayIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        let playImage = UIImage(named: "PlayIcon")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         button.setImage(playImage, for: .normal)
         button.setImage(playImage, for: [.normal, .highlighted])
-        let pauseImage = UIImage(named: "PauseIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        let pauseImage = UIImage(named: "PauseIcon")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         button.setImage(pauseImage, for: .selected)
         button.setImage(pauseImage, for: [.selected, .highlighted])
         button.tintColor = UIColor.appRed

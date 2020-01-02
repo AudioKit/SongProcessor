@@ -53,7 +53,7 @@ class EffectCollectionViewCell: UICollectionViewCell {
         tableView.register(EffectSliderTableViewCell.self, forCellReuseIdentifier: EffectCellType.effectSliderCell.identifier)
         tableView.contentInset = UIEdgeInsets(top: 100.0, left: 0.0, bottom: 0.0, right: 0.0)
         tableView.backgroundColor = UIColor.clear
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.delaysContentTouches = false
 
         return tableView    
@@ -81,7 +81,7 @@ class EffectCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints() {
         mainView.snp.makeConstraints { make in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0))
+            make.edges.equalTo(self).inset(UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0))
         }
         effectLabel.snp.makeConstraints { make in
             make.top.equalTo(mainView).offset(20.0)

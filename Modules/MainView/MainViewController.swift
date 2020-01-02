@@ -50,15 +50,15 @@ class MainViewController: UIViewController {
         
         view.backgroundColor = UIColor.appDarkGray
         self.navigationController?.navigationBar.barTintColor = UIColor.appDarkGray
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.appRed, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20.0)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appRed, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20.0)]
         self.title = "Song Processor"
         
-        self.addChildViewController(playerViewController)
+        self.addChild(playerViewController)
         
         setupViews()
         setupConstraints()
         
-        playerViewController.didMove(toParentViewController: self)
+        playerViewController.didMove(toParent: self)
         playerViewController.delegate = self
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
@@ -120,28 +120,28 @@ class MainViewController: UIViewController {
     func presentContentPicker(contentPickerType: ContentPickerType) {
         let contentPickerViewController = ContentPickerViewController(contentPickerType: contentPickerType)
         contentPickerViewController.delegate = self
-        self.addChildViewController(contentPickerViewController)
+        self.addChild(contentPickerViewController)
         view.addSubview(contentPickerViewController.view)
         contentPickerViewController.view.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
         contentPickerViewController.view.transform = CGAffineTransform(translationX: 0.0, y: effectsCollectionView.bounds.size.height)
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             contentPickerViewController.view.transform = .identity
         }) { _ in
-            contentPickerViewController.didMove(toParentViewController: self)
+            contentPickerViewController.didMove(toParent: self)
         }
     }
     
     func dismissChildViewController() {
-        guard childViewControllers.count > 0 else { return }
-        let childViewController = childViewControllers[childViewControllers.count - 1]
-        childViewController.willMove(toParentViewController: nil)
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        guard children.count > 0 else { return }
+        let childViewController = children[children.count - 1]
+        childViewController.willMove(toParent: nil)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             childViewController.view.transform = CGAffineTransform(translationX: 0.0, y: childViewController.view.bounds.size.height)            
         }) { _ in
             childViewController.view.removeFromSuperview()
-            childViewController.removeFromParentViewController()
+            childViewController.removeFromParent()
         }
     }
     
@@ -204,10 +204,10 @@ extension MainViewController: UICollectionViewDataSource {
             cell.tableView.delegate = self
             cell.configure(effect: viewModel.effectForIndexPath(indexPath))
             cell.tableView.reloadData()
-            cell.trashButton.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
+            cell.trashButton.removeTarget(self, action: nil, for: UIControl.Event.allEvents)
             cell.trashButton.tag = indexPath.item
             cell.trashButton.addTarget(self, action: #selector(trashButtonWasTapped(button:)), for: .touchUpInside)
-            cell.resetButton.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
+            cell.resetButton.removeTarget(self, action: nil, for: UIControl.Event.allEvents)
             cell.resetButton.tag = indexPath.item
             cell.resetButton.addTarget(self, action: #selector(resetButtonWasTapped(button:)), for: .touchUpInside)
             return cell
@@ -292,19 +292,19 @@ extension MainViewController: PlayerViewContollerDelegate {
     }
     
     func loadButtonWasTapped() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.alert)
         
-        let loadSongAction = UIAlertAction(title: "Play a song from iTunes Library", style: UIAlertActionStyle.default) { action in
+        let loadSongAction = UIAlertAction(title: "Play a song from iTunes Library", style: UIAlertAction.Style.default) { action in
             self.loadSongButtonWasTapped()
         }
         alertController.addAction(loadSongAction)
         
-        let loadLoopAction = UIAlertAction(title: "Play a loop", style: UIAlertActionStyle.default) { action in
+        let loadLoopAction = UIAlertAction(title: "Play a loop", style: UIAlertAction.Style.default) { action in
             self.loadLoopButtonWasTapped()
         }
         alertController.addAction(loadLoopAction)
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         present(alertController, animated: true)
     }
     
@@ -329,7 +329,7 @@ extension MainViewController: ContentPickerDelegate {
         effectsCollectionView.reloadData()
         pedalsCollectionView.reloadData()
         let lastIndexPath = IndexPath(item: viewModel.numberOfPedalCells - 1, section: 0)
-        pedalsCollectionView.scrollToItem(at: lastIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
+        pedalsCollectionView.scrollToItem(at: lastIndexPath, at: UICollectionView.ScrollPosition.right, animated: true)
         dismissChildViewController()
         SongProcessor.sharedInstance.updateEffectsChain(effects: viewModel.effects)
     }
@@ -361,9 +361,9 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: EffectCellType.effectSliderCell.identifier, for: indexPath) as! EffectSliderTableViewCell
         let effect = viewModel.effectForIndexPath(IndexPath(item: tableView.tag, section: 0))
         cell.configure(effectValue: effect.values[indexPath.row])
-        cell.slider.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
+        cell.slider.removeTarget(self, action: nil, for: UIControl.Event.allEvents)
         cell.slider.tag = indexPath.row
-        cell.slider.addTarget(self, action: #selector(sliderValueWasChanged(slider:)), for: UIControlEvents.valueChanged)
+        cell.slider.addTarget(self, action: #selector(sliderValueWasChanged(slider:)), for: UIControl.Event.valueChanged)
         return cell
     }
 }
