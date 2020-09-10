@@ -1,0 +1,116 @@
+//
+//  EffectCollectionViewCell.swift
+//  SongProcessor
+//
+//  Created by Yaron Karasik on 5/9/18.
+//  Copyright © 2018 AudioKit. All rights reserved.
+//
+
+import UIKit
+import AudioKit
+import AudioKitUI
+
+class EffectCollectionViewCell: UICollectionViewCell {
+    let mainView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 5.0
+        view.layer.borderWidth = 5.0
+        view.layer.borderColor = UIColor(white: 155.0/255.0, alpha: 0.5).cgColor
+        return view
+    }()
+    
+    let audioPlotView: AKNodeOutputPlot = {
+        let plot = AKNodeOutputPlot(frame: CGRect.zero)
+        plot.plotType = EZPlotType.buffer
+        plot.color = UIColor.white
+        plot.backgroundColor = UIColor.clear
+        plot.shouldFill = true
+        plot.shouldMirror = true
+        return plot
+    }()
+    
+    let resetButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "ResetIcon"), for: .normal)
+        return button
+    }()
+    
+    let effectLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 26.0)
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    let trashButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "TrashIcon"), for: .normal)
+        return button
+    }()
+    
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(EffectSliderTableViewCell.self, forCellReuseIdentifier: EffectCellType.effectSliderCell.identifier)
+        tableView.contentInset = UIEdgeInsets(top: 100.0, left: 0.0, bottom: 0.0, right: 0.0)
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.delaysContentTouches = false
+
+        return tableView    
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupViews()
+        setupConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        addSubview(mainView)
+        mainView.addSubview(tableView)
+        mainView.addSubview(resetButton)
+        mainView.addSubview(effectLabel)
+        mainView.addSubview(trashButton)
+        mainView.addSubview(audioPlotView)
+    }
+    
+    func setupConstraints() {
+        mainView.snp.makeConstraints { make in
+            make.edges.equalTo(self).inset(UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0))
+        }
+        effectLabel.snp.makeConstraints { make in
+            make.top.equalTo(mainView).offset(20.0)
+            make.centerX.equalTo(mainView)
+        }
+        resetButton.snp.makeConstraints { make in
+            make.size.equalTo(44.0)
+            make.centerY.equalTo(effectLabel)
+            make.left.equalTo(mainView).offset(10.0)
+        }
+        trashButton.snp.makeConstraints { make in
+            make.size.equalTo(44.0)
+            make.centerY.equalTo(effectLabel)
+            make.right.equalTo(mainView).offset(-10.0)
+        }
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(mainView)
+        }
+        audioPlotView.snp.makeConstraints { make in
+            make.top.equalTo(effectLabel.snp.bottom).offset(10.0)
+            make.left.equalTo(mainView).offset(5.0)
+            make.right.equalTo(mainView).offset(-5.0)
+            make.height.equalTo(50.0)
+        }
+    }
+    
+    func configure(effect: Effect) {
+        effectLabel.text = effect.effectType.name
+        mainView.backgroundColor = UIColor.colorForIndex(effect.effectType.rawValue)
+        audioPlotView.node = effect.node as? AKNode
+    }
+}

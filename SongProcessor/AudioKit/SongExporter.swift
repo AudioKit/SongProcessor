@@ -107,7 +107,7 @@ class SongExporter {
 
             // Set the session start time.
             let soundTrack = songAsset.tracks[0]
-            let cmtStartTime: CMTime = CMTimeMake(0, soundTrack.naturalTimeScale)
+            let cmtStartTime: CMTime = CMTimeMake(value: 0, timescale: soundTrack.naturalTimeScale)
             assetWriter.startSession(atSourceTime: cmtStartTime)
 
             // Variable to store the converted bytes.
